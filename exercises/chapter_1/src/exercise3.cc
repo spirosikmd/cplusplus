@@ -1,7 +1,27 @@
 #include <iostream>
 
-int main() {
-    int a = 0b0001;
+using namespace std;
+
+enum Day
+{
+    First, Second,Third,Fourth,Fifth,Sixth,Seventh,Eighth
+};
+
+enum Month
+{
+    January, February, March, April, May, June, July, August, September, October, November, December
+};
+
+void somefunc(Day d,Month m, int y) {
     
-    std::cout << a;
+    
+    
 }
+
+
+int main() {
+    
+    somefunc(First, April, 2011);
+
+}
+

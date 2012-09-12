@@ -82,15 +82,15 @@ The size of the source file hello.cc is 69Bytes, the object file hello.o is 1824
 
 We identified 13 basic data types, although \texttt{string} is a class-type.
 \begin{verbatim}
-void; char; short; int; long; float; double; bool; wchar\_t; 
+void; char; short; int; long; float; double; bool; wchar_t; 
 long long; long double; long long int; string
 \end{verbatim}
 
 
 \exercise{}
-
+%spyros
 \begin{description}
-	\item[b / B] 
+	\item[b / B] indicates a hexadecimal value, e.g.\ 0xb which  is equal to decimal 11. It can also be used to define a binary constant   
 	\item[e / E]
 	\item[F]
 	\item[L]
@@ -98,5 +98,21 @@ long long; long double; long long int; string
 	\item[U]
 	\item[x / a / f]
 \end{description}
+
+\exercise{}
+%cm
+The character a is represented by the decimal value 97 in the ASCII -Table. Three times 97 will be larger than 256 and thus exceeds the size of the char datatype, which results in an implicit overflow $(3 * 97) \% 256$.
+
+After the overflow the char has the decimal value 35 or the character representation \#.  
+
+\exercise{}
+%spyros
+
+\exercise{}
+%cm
+\exercise{}
+%spyros
+\exercise{}
+%cm
 
 \end{document}
