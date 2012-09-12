@@ -1,5 +1,7 @@
 #include <iostream>
 
 int main() {
-    int a = 5U;
+    int a = 0b0001;
+    
+    std::cout << a;
 }
