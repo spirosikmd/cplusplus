@@ -80,10 +80,11 @@ The size of the source file hello.cc is 69Bytes, the object file hello.o is 1824
 
 \exercise{}
 
-We identified 13 basic data types, although \texttt{string} is a class-type.
+We identified 13 basic data types, although \verb|size_t| is not really a built-in primitive data type.
+
 \begin{verbatim}
 void; char; short; int; long; float; double; bool; wchar_t; 
-long long; long double; long long int; string
+long long; long double; long long int; size_t
 \end{verbatim}
 
 
@@ -164,9 +165,11 @@ There is no need to change the year, as it is perceived by definition an integer
 	\item[Q3]\-
 	The header probably contains a class with the name DB. The problem is the definition of the company DB with the \verb|#define| preprocessor directive. If the header file is included in the first line of the source file then there will be no compile error, as the definition of DB with \verb|#define| will overwrite the class definition.
 	
-	However, if the header file is included just before the function declarations, then at the time of the definition of the DB class an error will be generated, because DB has already been defined with the integer value 1. This problem lies in the fact that macros ignore scopes, the type system, and the language's features and rules. The improvements that we introduced with the use of enumerations prevent the compilation errors. And this because enumerations are ...
+	However, if the header file is included just before the function declarations, then at the time of the definition of the DB class an error will be generated, because DB has already been defined using a macro and its value is 1 and cannot change. This problem lies in the fact that macros ignore scopes, the type system, and the language's features and rules. The improvements that we introduced with the use of enumerations prevent the compilation errors. And this because enumerations are ...
 	\item[Q4]\-
-	This happens because the definition of DB using the \verb|#define| directive overwrites the class definition of the header file. Therefore, it is impossible to use DB as if it is a class, because DB is equal to the integer value 1. \verb|C++| offers an alternative with the use of the scope resolution operator \verb|::| and the namespaces. For example, we could use the class DB of the db header file like \verb|db::DB|, using the db namespace.
+	This happens because the definition of DB using the \verb|#define| directive overwrites the class definition of the header file. Macros are visible form the time of their definition. Therefore, it is impossible to use DB as if it is a class, because at the time of use of DB, preprocessor has already replaced DB with the integer value 1.
+	
+	\verb|C++| offers an alternative with the use of the scope resolution operator \verb|::| and the namespaces. For example, we could use the class DB of the db header file like \verb|db::DB|, using the db namespace.
 \end{description}
 
 \exercise{}
