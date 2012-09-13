@@ -121,7 +121,9 @@ enum Month
 };
 \end{verbatim}
 
-This design provides a clearer way of asking input from the user. Now the function call will be showDate(2, September, 2010), letting the user specify the name of the month instead of a decimal number.\\
+Now the declaration of the function will be \verb|showDate(int daynr, Month month, int year)|, letting the user specify the name of the month instead of a decimal number, e.g. \verb|showDate(2, September, 2010)|. This leads to better readable and maintainable code.\\
+
+There is no need to change the year, as it is perceived by definition an integer type. The same could be true for the number of the day of the month. However, in order to be able to include the name of the day in the output, we assume that the function definition contains a way of accomplishing this.\\
 
 %showDate utilises an algorithm in order to be able to generate the name of the day in the output
 

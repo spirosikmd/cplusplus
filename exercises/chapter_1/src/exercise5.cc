@@ -2,11 +2,6 @@
 
 using namespace std;
 
-enum Day
-{
-    First, Second,Third,Fourth,Fifth,Sixth,Seventh,Eighth
-};
-
 enum Month
 {
     January=1, February, March, April, May, June, July,
@@ -20,6 +15,6 @@ void showDate(int daynr, Month month, int year)
 
 int main()
 {    
-    showDate(2, September, 2012);
+    showDate(2, Month::September, 2012);
 }
 
