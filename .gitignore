@@ -5,3 +5,4 @@
 *.synctex.gz
 *.o
 *.fdb_latexmk
+*.out
