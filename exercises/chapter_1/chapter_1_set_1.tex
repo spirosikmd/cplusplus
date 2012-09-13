@@ -134,7 +134,9 @@ There is no need to change the year, as it is perceived by definition an integer
 	\item[Q1]\-
 	The source file will always compile and without warnings. Even though in some cases the same integer numbers are used in order to define a company, this is not an issue for the compiler as long as the names of the companies remain unique. Furthermore, there is no issue with the declaration of the two functions.
 	\item[Q2]\-
-	There are ways to improve the provided source file. We focus in two places where the source file could be improved. First is to turn the define lists of the companies into enumerations. Two separated enumerations could be created one for each kind of companies.
+	There are ways to improve the provided source file. The problem with the use of the \verb|#define| preprocessor directives is that although there is a clear separation of the two different kind of companies, if we would want to add more companies, the list would increase too much. Furthermore, with the way the functions are declared, someone could pass a railroad company in the function which provides the schedule of airline companies and the compiler would not complain about it. However, the program could either crash or the results would be totally wrong.\\
+	
+	Therefore, we focus in two places where the source file could be improved. First is to turn the define lists of the companies into enumerations. Two separated enumerations could be created. One for each kind of company.
 	
 	\begin{verbatim}
 	enum RailroadCompany
@@ -150,7 +152,7 @@ There is no need to change the year, as it is perceived by definition an integer
 	
 	By creating these two enumerations, not only we completely remove the deprecated \verb|#define| preprocessor directives, but also the code becomes more maintainable. And these because if in the future we would like to introduce additional companies of any kind, we could easily add them in the related enumeration.\\
 	
-	The next change would be in the declaration of the two functions responsible for schedules. As we introduced the enumerations, now we can change the declarations of these functions to the following:
+	The second change would be in the declaration of the two functions responsible for the schedules. As we previously introduced the enumerations, now we can change the declarations of these functions to the following:
 	
 	\begin{verbatim}
 	void airlineSchedule(AirlineCompany company);
@@ -158,7 +160,7 @@ There is no need to change the year, as it is perceived by definition an integer
 	void railroadSchedule(RailroadCompany company);
 	\end{verbatim}
 	
-	These changes also lead to maintainable and more understandable code
+	These changes also lead to more maintainable and understandable code. Furthermore, now it is clear which type of company each function expect. The call of a function with an inappropriate company would lead to error, e.g. calling the function \verb|railroadSchedule| with the company \verb|KLM|.
 	\item[Q3]\-
 	\item[Q4]\-
 \end{description}
