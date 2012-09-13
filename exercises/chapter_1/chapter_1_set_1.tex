@@ -162,11 +162,9 @@ There is no need to change the year, as it is perceived by definition an integer
 	
 	These changes also lead to more maintainable and readable code. Furthermore, now it is clear which type of company each function expect. The call of a function with an inappropriate company would lead to an error, e.g. calling the function \verb|railroadSchedule| with the company \verb|KLM|.
 	\item[Q3]\-
-	The header probably contains a class with the name DB. The problem is the definition of the company DB with the \verb|#define| preprocessor directive. If the header file is included in the first line then there will be no compile error, as the definition of DB with \verb|#define| will override the class definition.
+	The header probably contains a class with the name DB. The problem is the definition of the company DB with the \verb|#define| preprocessor directive. If the header file is included in the first line then there will be no compile error, as the definition of DB with \verb|#define| will overwrite the class definition.
 	
-	However, if the header file is included just before the function declarations, then at the time of the definition of the DB class an error will be generated, because DB has already been defined with the integer value 1. This problem lies in the fact that macros ignore scopes, the type system, and the language's features and rules.\\
-	
-	Using enumerations prevent the compilation errors. 
+	However, if the header file is included just before the function declarations, then at the time of the definition of the DB class an error will be generated, because DB has already been defined with the integer value 1. This problem lies in the fact that macros ignore scopes, the type system, and the language's features and rules. The improvements that we introduced with the use of enumerations prevent the compilations errors. And this because enumerations are ...
 	\item[Q4]\-
 	This happens because the definition of DB using the \verb|#define| directive overwrites the class definition of the header file. Therefore, it is impossible to use DB as if it is a class, because DB is equal to the integer value 1. \verb|C++| offers an alternative with the use of the scope operator \verb|::|, e.g. we could use the class DB of the db header file like \verb|db::DB|.
 \end{description}
