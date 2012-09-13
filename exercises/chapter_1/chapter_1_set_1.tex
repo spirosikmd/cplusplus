@@ -168,6 +168,7 @@ There is no need to change the year, as it is perceived by definition an integer
 	
 	Using enumerations prevent the compilation errors. 
 	\item[Q4]\-
+	This happens because the definition of DB using the \verb|#define| directive overwrites the class definition of the header file. Therefore, it is impossible to use DB as if it is a class, because DB is equal to the integer value 1. \verb|C++| offers an alternative with the use of the scope operator \verb|::|, e.g. we could use the class DB of the db header file like \verb|db::DB|.
 \end{description}
 
 \exercise{}
