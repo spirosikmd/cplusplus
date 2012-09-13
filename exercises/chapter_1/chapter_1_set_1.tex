@@ -139,29 +139,32 @@ There is no need to change the year, as it is perceived by definition an integer
 	Therefore, we focus in two places where the source file could be improved. First is to turn the define lists of the companies into enumerations. Two separated enumerations could be created. One for each kind of company.
 	
 	\begin{verbatim}
-	enum RailroadCompany
+	enum RailroadCompanies
 	{
 	    NS, DB, SNCF, BR, AMTRAK
 	};
 	
-	enum AirlineCompany
+	enum AirlineCompanies
 	{
 	    BritishAirways, KLM, Lufthansa, UnitedAirlines
 	};
 	\end{verbatim}
 	
-	By creating these two enumerations, not only we completely remove the deprecated \verb|#define| preprocessor directives, but also the code becomes more maintainable. And these because if in the future we would like to introduce additional companies of any kind, we could easily add them in the related enumeration.\\
+	By creating these two enumerations, not only we completely remove the deprecated \verb|#define| preprocessor directives, but also the code becomes more maintainable and readable. And this because if in the future we would like to introduce additional companies of any kind, we could easily add them in the related enumeration. Also the values are generated automatically for us. Moreover, the use of enumerations offers the possibility of checking the values.\\
 	
 	The second change would be in the declaration of the two functions responsible for the schedules. As we previously introduced the enumerations, now we can change the declarations of these functions to the following:
 	
 	\begin{verbatim}
-	void airlineSchedule(AirlineCompany company);
+	void airlineSchedule(AirlineCompanies company);
 	
-	void railroadSchedule(RailroadCompany company);
+	void railroadSchedule(RailroadCompanies company);
 	\end{verbatim}
 	
-	These changes also lead to more maintainable and understandable code. Furthermore, now it is clear which type of company each function expect. The call of a function with an inappropriate company would lead to error, e.g. calling the function \verb|railroadSchedule| with the company \verb|KLM|.
+	These changes also lead to more maintainable and readable code. Furthermore, now it is clear which type of company each function expect. The call of a function with an inappropriate company would lead to an error, e.g. calling the function \verb|railroadSchedule| with the company \verb|KLM|.
 	\item[Q3]\-
+	The header probably contains a class with the name DB. The problem is the definition of the company DB with the \verb|#define| preprocessor directive. If the header file is included in the first line then there will be no compile error, as the definition of DB with \verb|#define| will override the class definition. However, if the header file is included just before the function declarations, then at the time of the definition of the DB class an error will be generated, because DB has already been defined as an integer constant.\\
+	
+	
 	\item[Q4]\-
 \end{description}
 
