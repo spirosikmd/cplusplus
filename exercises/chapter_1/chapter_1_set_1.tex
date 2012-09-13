@@ -99,7 +99,7 @@ long long; long double; long long int; string
 	\item[x / X] is used in order to specify hexadecimal constants, e.g. 0x8 which is equal to the decimal value 8.
 	\item[a / A] is used in order to specify a hexadecimal value, e.g. 0xA which is equal to the decimal value 10.
 	\item[c / C] is used in order to indicate a hexadecimal value, e.g. 0xC which is equal to the decimal value 12.
-	\item[d / D] is used in order to indicate a hexadecimal value, e.g. 0xC which is equal to the decimal value 13.
+	\item[d / D] is used in order to indicate a hexadecimal value, e.g. 0xD which is equal to the decimal value 13.
 \end{description}
 
 \exercise{}
@@ -162,9 +162,11 @@ There is no need to change the year, as it is perceived by definition an integer
 	
 	These changes also lead to more maintainable and readable code. Furthermore, now it is clear which type of company each function expect. The call of a function with an inappropriate company would lead to an error, e.g. calling the function \verb|railroadSchedule| with the company \verb|KLM|.
 	\item[Q3]\-
-	The header probably contains a class with the name DB. The problem is the definition of the company DB with the \verb|#define| preprocessor directive. If the header file is included in the first line then there will be no compile error, as the definition of DB with \verb|#define| will override the class definition. However, if the header file is included just before the function declarations, then at the time of the definition of the DB class an error will be generated, because DB has already been defined as an integer constant.\\
+	The header probably contains a class with the name DB. The problem is the definition of the company DB with the \verb|#define| preprocessor directive. If the header file is included in the first line then there will be no compile error, as the definition of DB with \verb|#define| will override the class definition.
 	
+	However, if the header file is included just before the function declarations, then at the time of the definition of the DB class an error will be generated, because DB has already been defined with the integer value 1. This problem lies in the fact that macros ignore scopes, the type system, and the language's features and rules.\\
 	
+	Using enumerations prevent the compilation errors. 
 	\item[Q4]\-
 \end{description}
 
