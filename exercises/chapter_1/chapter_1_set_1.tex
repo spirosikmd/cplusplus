@@ -167,7 +167,7 @@ There is no need to change the year, as it is perceived by definition an integer
 	
 	However, if the header file is included just before the function declarations, then at the time of the definition of the DB class an error will be generated, because DB has already been defined using a macro and its value is 1 and cannot change. This problem lies in the fact that macros ignore scopes, the type system, and the language's features and rules. The improvements that we introduced with the use of enumerations prevent the compilation errors.
 	\item[Q4]\-
-	This happens because the definition of DB using the \verb|#define| directive overwrites the class definition of the header file. Macros are visible form the time of their definition. Therefore, it is impossible to use DB as if it is a class, because at the time of use of DB, preprocessor has already replaced DB with the integer value 1.
+	This happens because the definition of DB using the \verb|#define| directive overwrites the class definition of the header file. Macros are visible from the time of their definition. Therefore, it is impossible to use DB as if it is a class, because at the time of use of DB, preprocessor has already replaced DB with the integer value 1.
 	
 	\verb|C++| offers an alternative with the use of the scope resolution operator \verb|::| and the concept of namespaces. For example, we could use the class DB of the db header file like \verb|db::DB|, using the db namespace.
 \end{description}
