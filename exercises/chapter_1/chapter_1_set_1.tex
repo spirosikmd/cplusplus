@@ -128,6 +128,20 @@ There is no need to change the year, as it is perceived by definition an integer
 
 \exercise{}
 %cm
+
+Give short (1-2 sentences) answers to the following questions
+
+In C++, what's the difference between a declaration and a definition?
+
+What are header files used for?
+
+In what part of program development are header files used and in what part libraries? (Why are they used)?
+
+Is a library an object module? Explain and explain why they are used.
+
+Why is an object module obtained from compiling a source containing int main() not an executable program?
+
+
 \exercise{}
 %spyros
 
@@ -174,5 +188,32 @@ There is no need to change the year, as it is perceived by definition an integer
 
 \exercise{}
 %cm
+
+What are `escape sequences'? What standard `escape sequences' are defined in C++? What are their meanings?
+
+What happens if another character is written as an escape sequence? And what is the consequence of that?
+
+taken from wikipedia "an escape character is a character which invokes an alternative interpretation on subsequent characters in a character sequence. An escape character is a particular case of metacharacters. Generally, the judgement of whether something is an escape character or not depends on context."
+
+Escape
+sequence	 Description	 Representation
+\textbackslash'	 single quote	 byte 0x27
+\textbackslash"	 double quote	 byte 0x22
+\textbackslash?	 question mark	 byte 0x3f
+\textbackslash\textbackslash	 backslash	 byte 0x5c
+\textbackslash 0	 null character	 byte 0x00
+\textbackslash a	 audible bell	 byte 0x07
+\textbackslash b	 backspace	 byte 0x08
+\textbackslash f	 form feed - new page	 byte 0x0c
+\textbackslash n	 line feed - new line	 byte 0x0a
+\textbackslash r	 carriage return	 byte 0x0d
+\textbackslash t	 horizontal tab	 byte 0x09
+\textbackslash v	 vertical tab	 byte 0x0b
+\textbackslash nnn	 arbitrary octal value	 byte nnn
+\textbackslash xnn	 arbitrary hexadecimal value	 byte nn
+\textbackslash unnnn	 arbitrary Unicode value.
+May result in several characters.	 code point U+nnnn
+\textbackslash Unnnnnnnn	 arbitrary Unicode value.
+May result in several characters.	 code point U+nnnnnnnn
 
 \end{document}
