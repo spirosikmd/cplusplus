@@ -114,14 +114,14 @@ After the overflow the char has the decimal value 35 or the character representa
 The type of the parameters of the function \verb|showDate| are not well chosen and the design can be improved. As an alternative design we could have created an enumeration for the type of the month. The definition of the enumeration could be the following:
 
 \begin{verbatim}
-enum Month
+enum Months
 {
     January=1, February, March, April, May, June, July,
     August, September, October, November, December
 };
 \end{verbatim}
 
-Now the declaration of the function will be \verb|showDate(int daynr, Month month, int year)|, letting the user specify the name of the month instead of a decimal number, e.g. \verb|showDate(2, September, 2010)|. This leads to better readable and maintainable code.\\
+Now the declaration of the function will be \verb|showDate(int daynr, Months month, int year)|, letting the user specify the name of the month instead of a decimal number, e.g. \verb|showDate(2, September, 2010)|. This leads to better readable and maintainable code.\\
 
 There is no need to change the year, as it is perceived by definition an integer type. The same could be true for the number of the day of the month. However, in order to be able to generate the name of the day in the output, we assume that the function definition contains a way of accomplishing this.\\
 
