@@ -5,9 +5,6 @@
 *.synctex.gz
 *.o
 *.fdb_latexmk
-<<<<<<< HEAD
 *.out
-=======
 
 exercises/chapter_1/src/hello
->>>>>>> git ignore executable
