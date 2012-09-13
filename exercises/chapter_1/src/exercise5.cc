@@ -9,19 +9,17 @@ enum Day
 
 enum Month
 {
-    January, February, March, April, May, June, July, August, September, October, November, December
+    January=1, February, March, April, May, June, July,
+    August, September, October, November, December
 };
 
-void somefunc(Day d,Month m, int y) {
-    
-    
-    
+void showDate(int daynr, Month month, int year)
+{
+    cout << month << endl;
 }
 
-
-int main() {
-    
-    somefunc(First, April, 2011);
-
+int main()
+{    
+    showDate(2, September, 2012);
 }
 
