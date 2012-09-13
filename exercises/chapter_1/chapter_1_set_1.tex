@@ -123,14 +123,22 @@ enum Month
 
 Now the declaration of the function will be \verb|showDate(int daynr, Month month, int year)|, letting the user specify the name of the month instead of a decimal number, e.g. \verb|showDate(2, September, 2010)|. This leads to better readable and maintainable code.\\
 
-There is no need to change the year, as it is perceived by definition an integer type. The same could be true for the number of the day of the month. However, in order to be able to include the name of the day in the output, we assume that the function definition contains a way of accomplishing this.\\
-
-%showDate utilises an algorithm in order to be able to generate the name of the day in the output
+There is no need to change the year, as it is perceived by definition an integer type. The same could be true for the number of the day of the month. However, in order to be able to generate the name of the day in the output, we assume that the function definition contains a way of accomplishing this.\\
 
 \exercise{}
 %cm
 \exercise{}
 %spyros
+
+\begin{description}
+	\item[Q1]\-
+	The source file will always compile and without warnings. Even though in some cases the same integer numbers are used in order to define a company, this is not an issue for the compiler as long as the names of the companies remain unique.
+	\item[Q2]\-
+	% make the define lists enumerations
+	\item[Q3]\-
+	
+\end{description}
+
 \exercise{}
 %cm
 
