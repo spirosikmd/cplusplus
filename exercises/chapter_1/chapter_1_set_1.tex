@@ -133,13 +133,32 @@ Give short (1-2 sentences) answers to the following questions
 
 In C++, what's the difference between a declaration and a definition?
 
+
+taken from stackoverflow (A declaration introduces an identifier and describes its type, be it a type, object, or function. A declaration is what the compiler needs to accept references to that identifier. These are declarations:
+
+A definition actually instantiates/implements this identifier. It's what the linker needs in order to link references to those entities. These are definitions corresponding to the above declarations:
+
+A definition can be used in the place of a declaration.
+An identifier can be declared as often as you want. Thus, the following is legal in C and C++:
+
+However, it must be defined exactly once. If you forget to define something that's been declared and referenced somewhere, then the linker doesn't know what to link references to and complains about a missing symbols. If you define something more than once, then the linker doesn't know which of the definitions to link references to and complains about duplicated symbols.)
+
 What are header files used for?
+
+To declare methods, variables constants, classes etc. It separates the declaration from the definition in the actual source code file. Interface
 
 In what part of program development are header files used and in what part libraries? (Why are they used)?
 
+???
+
 Is a library an object module? Explain and explain why they are used.
 
+
 Why is an object module obtained from compiling a source containing int main() not an executable program?
+
+
+
+Another (more obvious) advantage is that this allows the creation of large programs without having to redo the compilation step every time a file is changed.
 
 
 \exercise{}
