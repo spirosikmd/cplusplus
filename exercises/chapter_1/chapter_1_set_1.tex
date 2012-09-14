@@ -141,10 +141,10 @@ There is no need to change the year, as it is perceived by definition an integer
 	Libraries are used during the implementation phase of the program development. Libraries are meant to be used by other programs. 
 	\item[Q4]\-
 	%Is a library an object module? Explain and explain why they are used.
-	Library is not an object module. Typically it consists of a header file that contains declarations for everything the library wishes to expose, and a precompiled object that contains all of the implementation code compiled into machine language. Libraries are meant to be used by other programs.
+	Library is not an object module. It is a package of code. Typically it consists of a header file that contains declarations for everything the library wishes to expose, and a precompiled object that contains all of the implementation code compiled into machine language. Libraries are meant to be used by other programs.
 	\item[Q5]\-
-	%Why is an object module obtained from compiling a source containing int main() not an executable program?
-	something
+	%Why an object module obtained from compiling a source containing int main() is not an executable program?
+	The compilation step and the creation of the object file does not create anything the user can actually run. Instead, the compiler merely produces the machine language instructions that correspond to the source code file that was compiled. An object file contains a translation of the source code file into a machine language file.
 	%Another (more obvious) advantage is that this allows the creation of large programs without having to redo the compilation step every time a file is changed.
 \end{description}
 
