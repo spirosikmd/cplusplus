@@ -183,13 +183,13 @@ There is no need to change the year, as it is perceived by definition an integer
 	
 	These changes also lead to more maintainable and readable code. Furthermore, now it is clear which type of company each function expect. The call of one of these functions with an inappropriate company would lead to an error, e.g. calling the function \verb|railroadSchedule| with the company \verb|KLM|.
 	\item[Q3]\-
-	The header probably contains a class with the name \verb|DB|. The problem is the definition of the company \verb|DB| with the \verb|#define| preprocessor directive. If the header file is included in the first line of the source file then there will be no compile error, as the definition of \verb|DB| with \verb|#define| will overwrite the class definition.
+	The header probably contains a definition of the variable with name \verb|DB|. The problem is the definition of the company \verb|DB| with the \verb|#define| preprocessor directive. If the header file is included in the first line of the source file then there will be no compile error, as the definition of \verb|DB| with \verb|#define| will overwrite the previous definition pf \verb|DB| in the header file.
 	
-	However, if the header file is included just before the function declarations, then at the time of the definition of the \verb|DB| class an error will be generated, because \verb|DB| has already been defined using a macro and its value is 1 and cannot change. This problem lies in the fact that macros ignore scopes, the type system, and the language's features and rules. The improvements that we introduced with the use of enumerations prevent the compilation errors.
+	However, if the header file is included just before the function declarations, then at the time of the definition of \verb|DB| in the header file, an error will be generated because \verb|DB| has already been defined using a macro and its value is 1 and cannot change. This problem lies in the fact that macros ignore scopes, the type system, and the language's features and rules. The improvements that we introduced with the use of enumerations prevent the compilation errors.
 	\item[Q4]\-
-	This happens because the definition of \verb|DB| using the \verb|#define| directive overwrites the class definition of the header file. Macros are visible from the time of their definition. Therefore, it is impossible to use \verb|DB| as if it is a class, because at the time of use of \verb|DB|, the preprocessor has already replaced \verb|DB| with the integer value 1.
+	This happens because the definition of \verb|DB| using the \verb|#define| directive overwrites the previous definition of it in the header file. Macros are visible from the time of their definition. Therefore, it is impossible to use \verb|DB| as whatever is defined as in the header file, because at the time of use of \verb|DB| in the source file, the preprocessor has already replaced \verb|DB| with the integer value 1.
 	
-	\verb|C++| offers an alternative with the use of the scope resolution operator \verb|::| and the concept of namespaces. For example, we could use the class \verb|DB| of the db header file like \verb|db::DB|, using the db namespace.
+	\verb|C++| offers an alternative with the use of the scope resolution operator \verb|::| and the concept of namespaces. For example, we could use \verb|DB| of the db header file like \verb|db::DB|, using the db namespace.
 \end{description}
 
 \exercise{}
