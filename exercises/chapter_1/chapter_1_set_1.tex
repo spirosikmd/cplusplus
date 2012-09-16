@@ -90,7 +90,12 @@ long long; long double; long long int; size_t
 	\item[f / F] can be used as a postfix to a non-integral numeric constant to indicate a value of type float. For example, 10.F is a float value. Another example is 1.155E+2F which is equal to the decimal value 115.5. It also indicates a hexadecimal value, e.g. 0xf which is equal to the decimal value 15.
 	\item[L] can be used as a prefix to indicate a character string whose elements are wchar\_t type characters. For example, L"Hello, World!". It can also be used as a postfix to an integral value to indicate a value of type long, e.g. 20L.
 	\item[p] is used to specify the power in hexadecimal floating point numbers. For example, 0x10p2 which is equal to the decimal value 64. The exponent itself is read as a decimal constant and can therefore not start with 0x.
-	\item[U] can be used as postfix to an integral value to indicate an unsigned value. For example, 2U. It can also be combined with L to produce an unsigned long int value, e.g. 10UL.
+	\item[u / U] can be used as postfix to an integral value to indicate an unsigned value. For example, 2U. It can also be combined with L to produce an unsigned long int value, e.g. 10UL. Alternatively, it can be used as a prefix to indicate various unicode encodings. For example:
+	\begin{itemize}
+		\item \verb|char     utf_8[ ] = u8"UTF-8 encoded";|
+		\item \verb|char16_t utf16[ ] = u"UTF-16 encoded";|
+		\item \verb|char32_t utf32[ ] = U"UTF-32 encoded";|
+	\end{itemize}
 	\item[x / X] is used in order to specify hexadecimal constants, e.g. 0x8 which is equal to the decimal value 8.
 	\item[a / A] is used in order to specify a hexadecimal value, e.g. 0xA which is equal to the decimal value 10.
 	\item[c / C] is used in order to indicate a hexadecimal value, e.g. 0xC which is equal to the decimal value 12.
