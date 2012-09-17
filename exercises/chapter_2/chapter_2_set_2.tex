@@ -10,7 +10,7 @@
 \definecolor{Green}{rgb}{0,0.75,0.0}
 \definecolor{LightGray}{rgb}{0.6,0.6,0.6}
 \definecolor{DarkGray}{rgb}{0.3,0.3,0.3}
-%\lstset{language=C++,
+\lstset{language=C++,
 %   keywords={function,uint8,uint16,uint32,double,break,case,catch,continue,else,elseif,end,for,global,if,otherwise,persistent,return,switch,try,while},
 %   basicstyle=\ttfamily\small,
 %   breaklines=true,
@@ -23,9 +23,9 @@
 %   numbersep=10pt,
 %   backgroundcolor=\color{white},
 %   tabsize=2,
-%   showspaces=false,
-%   showstringspaces=false,
-%   captionpos=b}
+   showspaces=false,
+   showstringspaces=false,
+   captionpos=t}
 
 %Boldface text for type writer font
 \usepackage{bold-extra} %\DeclareFontShape{OT1}{cmtt}{bx}{n}{<5><6><7><8><9><10><10.95><12><14.4><17.28><20.74><24.88>cmttb10}{}
@@ -53,6 +53,14 @@
 
 \exercise{}
 %spyros
+
+\lstinputlisting{./src/ex9/ex9.cc}
+
+The value of 100 shows the character `d'  because the decimal number 100 corresponds to the character `d' in the ascii table. The value of 356 shows also the character `d' because ...
+
+size\_t is 8 bytes and char is 1 byte, so when 356 is casted from size\_t to char only 1 byte is left ...
+
+the byte that is left has the binary form of 01100100 which is equal to 100 and hence it shows the same character `d' because as previously mentioned the decimal value 100 corresponds to the character `d' in the ascii table\\
 
 \exercise{}
 %manni
