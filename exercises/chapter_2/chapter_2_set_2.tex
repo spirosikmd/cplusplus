@@ -64,18 +64,78 @@ the byte that is left has the binary form of 01100100 which is equal to 100 and 
 
 \exercise{}
 %manni
+% Purpose of this exercise: understand how the compiler reads source files and understand how the decrement operators work.
+% Consider the following expressions (make sure you realize the correct number of minuses, hence the top line indicating column numbers):
+% 
+% 
+%             123456
+%     1:      ----a
+%     2:      -----a
+%     3:      a----
+%         
+% Why does the first expression compile?
+% Why does the second expression not compile?
+% Why does the third expression not compile?
+% Change the a in the first expression into the value 5 and explain why the thus changed expression does not compile.
+% Change the layout of the second expression showing the way the compiler interprets that expression: add blanks to show what different elements the compiler sees.
+% Provide two different layouts for the second expression which would result in completely different (but compilable) interpretations of the expression.
+% When changing the layout, do not use parentheses but only blanks.
+
+\begin{description}
+    \item ----a
+    \item -----a
+    \item a----
+    \item ----5
+    \item Change the layout of the second expression showing the way the compiler interprets that expression: add blanks to show what different elements the compiler sees.
+    \item Provide two different layouts for the second expression which would result in completely different (but compilable) interpretations of the expression.
+\end{description}
 
 \exercise{}
 %spyros
 
 \exercise{}
 %manni
-
+% Purpose of this exercise: understand the way getline() operates.
+% The function getline(std::istream &in, std::string &str) is frequently used to read the next line from an istream, storing the line in the std::string str.
+% 
+% Design a program that extracts a line from the standard input and inserts the text `incomplete line' into the standard output stream if the line did not terminate with a \n-character and inserts the text `complete line' into the standard output stream if the line did terminate with a \n-character.
+% 
+% If the program is called line, use /bin/echo -n hello world | line to read an incomplete line, use /bin/echo hello world | line to read a complete line.
+% 
+% This program should contain only one statement, starting with cout.
+% 
+% In the C standard library there lives a function gets which can also be used to read a line of text from the input stream. The function gets fills a buffer of type char *. For now assume that these kinds of buffers exist, are comparable to std::string objects, and that you have a buffer of type char *. Would you use gets to fill that buffer? Explain your answer.
+% 
+% Suggestion: insert the line `using namespace std;' just beyond the last #include directive to prevent you from having to write std:: many times.
 \exercise{}
 %spyros
 
 \exercise{}
 %manni
+% (optional)
+% Purpose of this exercise: encounter some interesting application of some of the lesser-used operators.
+% When applying for a job at Google, you are asked all kinds of interesting questions. If you answer them all correctly, Google will accept you, otherwise they'll not, knowing that there are many others who might fill in the job opening.
+% 
+% Here is one of these Google riddles for you to solve:
+% 
+% Write a program that extracts (cin) an integral value (you may assume that the provided value fits a size_t's width). Following this there should be one statement resulting in the output:
+% 
+% 
+%     The value is an exact power of two
+%         
+% if this is the case, while the progam's output should be
+% 
+%     The value is no exact power of two
+%         
+% if this is the case.
+% E.g., entering the value 12 should result in the output
+% 
+% 
+%     The value is no exact power of two
+%         
+% and entering 128 should result in:
+% 
+%     The value is an exact power of two
 
 \exercise{}
 %spyros
