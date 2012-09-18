@@ -6,3 +6,5 @@
 *.o
 *.fdb_latexmk
 *.out
+hello
+line
