@@ -1,7 +1,9 @@
 #include <iostream>
 
+using namespace std;
+
 int main() {
-	std::string str;
-	getline(std::cin, str);
-	std::cout << str << '\n';
+    string str;
+    getline(cin, str);
+    cout << (cin.eof() ? "complete line" : "incomplete line") << "\n";
 }
