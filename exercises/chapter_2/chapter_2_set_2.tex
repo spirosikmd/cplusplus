@@ -10,13 +10,12 @@
 \definecolor{Green}{rgb}{0,0.75,0.0}
 \definecolor{LightGray}{rgb}{0.6,0.6,0.6}
 \definecolor{DarkGray}{rgb}{0.3,0.3,0.3}
-\definecolor{gray}{rgb}{0.3,0.3,0.3}
+\definecolor{gray}{rgb}{0.45,0.45,0.45}
 \usepackage{caption}
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFormat{listing}{%
-  \parbox{\textwidth}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}\vskip-4pt}}
+\parbox{\textwidth}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}\vskip-4pt}}
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
-\lstset{frame=lrb,xleftmargin=\fboxsep,xrightmargin=-\fboxsep}
 
 \lstset{language=C++,
 %   keywords={function,uint8,uint16,uint32,double,break,case,catch,continue,else,elseif,end,for,global,if,otherwise,persistent,return,switch,try,while},
@@ -33,7 +32,12 @@
 %   tabsize=2,
    showspaces=false,
    showstringspaces=false,
-   captionpos=t}
+   captionpos=t,
+   frame=b,
+   xleftmargin=\fboxsep,
+   xrightmargin=-\fboxsep,
+   belowcaptionskip=1em
+   }
 
 %Boldface text for type writer font
 \usepackage{bold-extra} %\DeclareFontShape{OT1}{cmtt}{bx}{n}{<5><6><7><8><9><10><10.95><12><14.4><17.28><20.74><24.88>cmttb10}{}
@@ -92,12 +96,22 @@ In the second case, we casted the variable \verb|ch| to \verb|size_t|. We used t
 % When changing the layout, do not use parentheses but only blanks.
 
 \begin{description}
-    \item ----a
-    \item -----a
-    \item a----
-    \item ----5
-    \item Change the layout of the second expression showing the way the compiler interprets that expression: add blanks to show what different elements the compiler sees.
-    \item Provide two different layouts for the second expression which would result in completely different (but compilable) interpretations of the expression.
+    \item[a)]\- 
+    	\verb|----a|
+    \item[b)]\- 
+    	\verb|-----a| results in the error \texttt{lvalue required as decrement operand}. The compiler first applies the \verb|-| prefix operator to a, which turns the a into an rvalue. The \verb|--| decrement operators can only operate on a lvalue.
+    \item[c)]\- 
+	    \verb|a----| results in the error \texttt{lvalue required as decrement operand}
+    \item[d)]\- 
+    	\verb|----5| results in the error \texttt{lvalue required as decrement operand}
+    \item[e)] Change the layout of the second expression showing the way the compiler interprets that expression: add blanks to show what different elements the compiler sees.\\
+    	\verb|-- -- -a|
+    
+    
+    \item[f)]\-
+     Provide two different layouts for the second expression which would result in completely different (but compilable) interpretations of the expression.\\
+	\verb|- ----a| results in two decrements and turns the result negative e.g. if a is initialy 5, after the operation it will be -3.
+    
 \end{description}
 
 \exercise{}
@@ -107,20 +121,24 @@ In the second case, we casted the variable \verb|ch| to \verb|size_t|. We used t
 
 \exercise{}
 
-\lstinputlisting[caption=line.cc,label=lst:line]{src/ex12/line.cc}
+\begin{description}
+\item[a)]\-
 %manni
 % Purpose of this exercise: understand the way getline() operates.
 % The function getline(std::istream &in, std::string &str) is frequently used to read the next line from an istream, storing the line in the std::string str.
-% 
 % Design a program that extracts a line from the standard input and inserts the text `incomplete line' into the standard output stream if the line did not terminate with a \n-character and inserts the text `complete line' into the standard output stream if the line did terminate with a \n-character.
-% 
 % If the program is called line, use /bin/echo -n hello world | line to read an incomplete line, use /bin/echo hello world | line to read a complete line.
-% 
 % This program should contain only one statement, starting with cout.
-% 
+\lstinputlisting[caption=line.cc,label=lst:line]{src/ex12/line.cc}
 % In the C standard library there lives a function gets which can also be used to read a line of text from the input stream. The function gets fills a buffer of type char *. For now assume that these kinds of buffers exist, are comparable to std::string objects, and that you have a buffer of type char *. Would you use gets to fill that buffer? Explain your answer.
+\item[b) Would you use gets to fill that buffer?]\-
+
+Many problems in C programs are caused by buffer overruns, boundary errors and allocation problems that can be traced back to improperly using these traditional C string library functions
+
+C++ strings handle all the required memory management and thus memory related problems, which is the \#1 source of problems in C programs, can be prevented when C++ strings are used.
 % 
 % Suggestion: insert the line `using namespace std;' just beyond the last #include directive to prevent you from having to write std:: many times.
+\end{description}
 \exercise{}
 %spyros
 
