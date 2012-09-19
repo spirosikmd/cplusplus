@@ -155,33 +155,14 @@ C++ strings handle all the required memory management and thus memory related pr
 \end{itemize}
 
 \exercise{}
+% manni (optional)
+A number is an exact power of two, if and only if the binary representation contains exactly one 1 since each digit represents an increasing power of 2, e.g. 4 = 0x0100. This can be used to check for the power of two using the binary and operator (\verb|&|).
+The result of the (\verb|&|)-operator between the value and the value-1 will only result in 0, if value is a power of two. In all other cases the result will contain at least two 1's (or zero).
+
+
+The code shown in Listing~\ref{lst:powerOfTwo} first checks if the value is not 0 and if this is not the case, uses the perviously discussed operation to determine whether a number is an exact power of two. 
 
 \lstinputlisting[caption=powerOfTwo.cc,label=lst:powerOfTwo]{src/ex14/powerOfTwo.cc}
-%manni
-% (optional)
-% Purpose of this exercise: encounter some interesting application of some of the lesser-used operators.
-% When applying for a job at Google, you are asked all kinds of interesting questions. If you answer them all correctly, Google will accept you, otherwise they'll not, knowing that there are many others who might fill in the job opening.
-% 
-% Here is one of these Google riddles for you to solve:
-% 
-% Write a program that extracts (cin) an integral value (you may assume that the provided value fits a size_t's width). Following this there should be one statement resulting in the output:
-% 
-% 
-%     The value is an exact power of two
-%         
-% if this is the case, while the progam's output should be
-% 
-%     The value is no exact power of two
-%         
-% if this is the case.
-% E.g., entering the value 12 should result in the output
-% 
-% 
-%     The value is no exact power of two
-%         
-% and entering 128 should result in:
-% 
-%     The value is an exact power of two
 
 \exercise{}
 %spyros

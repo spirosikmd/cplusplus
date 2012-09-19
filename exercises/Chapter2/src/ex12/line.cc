@@ -2,7 +2,8 @@
 
 using namespace std;
 
-int main() {
+int main() 
+{
     string str;
     getline(cin, str);
     cout << (cin.eof() ? "complete line" : "incomplete line") << "\n";
