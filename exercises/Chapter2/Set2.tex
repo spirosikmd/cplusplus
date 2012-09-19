@@ -119,24 +119,18 @@ In the second case, we casted the variable \verb|ch| to \verb|size_t|. We used t
 
 \lstinputlisting[caption=programename.cc]{./src/ex11/ex11.cc}
 
+
 \exercise{}
+
+If \verb|getline| does not encounter a \textbackslash{n}, the eofbit will be raised and \verb|cin.eof()| returns true (cf. C++Annotations p. 85). 
+
 \lstinputlisting[caption=line.cc,label=lst:line]{src/ex12/line.cc}
 \begin{description}
-%mann
-% Purpose of this exercise: understand the way getline() operates.
-% The function getline(std::istream &in, std::string &str) is frequently used to read the next line from an istream, storing the line in the std::string str.
-% Design a program that extracts a line from the standard input and inserts the text `incomplete line' into the standard output stream if the line did not terminate with a \n-character and inserts the text `complete line' into the standard output stream if the line did terminate with a \n-character.
-% If the program is called line, use /bin/echo -n hello world | line to read an incomplete line, use /bin/echo hello world | line to read a complete line.
-% This program should contain only one statement, starting with cout.
+\item[Would you use gets to fill that buffer?]\-
 
-% In the C standard library there lives a function gets which can also be used to read a line of text from the input stream. The function gets fills a buffer of type char *. For now assume that these kinds of buffers exist, are comparable to std::string objects, and that you have a buffer of type char *. Would you use gets to fill that buffer? Explain your answer.
-\item[b) Would you use gets to fill that buffer?]\-
+No I would not use the \verb|gets|-function because it has security issues.  The function does not check, if the buffer is large enough respectively it does not stop reading if the buffer is full. Hence, the function could result in a buffer overflow. \footnote{http://www.cplusplus.com/reference/clibrary/cstdio/gets/}.In contrast, C++ strings handle all the required memory management, which helps in developing more robust applications. 
 
-Many problems in C programs are caused by buffer overruns, boundary errors and allocation problems that can be traced back to improperly using these traditional C string library functions
 
-C++ strings handle all the required memory management and thus memory related problems, which is the \#1 source of problems in C programs, can be prevented when C++ strings are used.
-% 
-% Suggestion: insert the line `using namespace std;' just beyond the last #include directive to prevent you from having to write std:: many times.
 \end{description}
 \exercise{}
 %spyros
