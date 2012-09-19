@@ -14,5 +14,5 @@ int main()
     size_t opos = path_string.find(string_to_remove);
     size_t length = string_to_remove.length();
     path_string.erase(opos, length);
-    cout << "New PATH: " << path_string << "\n";
+    cout << "New PATH: " << path_string << '\n';
 }
