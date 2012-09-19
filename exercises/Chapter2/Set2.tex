@@ -108,10 +108,10 @@ In the second case, we casted the variable \verb|ch| to \verb|size_t|. We used t
     	\verb|-- -- -a|
     
     
-    \item[f)]\-
-     Provide two different layouts for the second expression which would result in completely different (but compilable) interpretations of the expression.\\
-	\verb|- ----a| results in two decrements and turns the result negative e.g. if a is initialy 5, after the operation it will be -3.
-    
+    \item[f) Two different compilable layouts for the b]\-
+
+	\verb|- ----a| results in two decrements and turns the result negative, e.g. if a is initially 5, after the operation it will be -3.\\
+    \verb|- - - --a| results in one decrement and turns the result negative, positive and negative again, e.g. if a is initially 5, after the operation it will be -4.
 \end{description}
 
 \exercise{}
