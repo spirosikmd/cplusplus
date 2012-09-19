@@ -12,16 +12,16 @@
 \definecolor{DarkGray}{rgb}{0.3,0.3,0.3}
 \lstset{language=C++,
 %   keywords={function,uint8,uint16,uint32,double,break,case,catch,continue,else,elseif,end,for,global,if,otherwise,persistent,return,switch,try,while},
-%   basicstyle=\ttfamily\small,
+   basicstyle=\ttfamily\small,
 %   breaklines=true,
-%   keywordstyle=\bfseries\color{Blue},
-%   commentstyle=\itshape\color{LightGray},
-%   stringstyle=\color{Green},
+   keywordstyle=\bfseries\color{Blue},
+   commentstyle=\itshape\color{LightGray},
+   stringstyle=\color{Green},
 %   numbers=left,
 %   numberstyle=\tiny\color{DarkGray},
 %   stepnumber=1,
 %   numbersep=10pt,
-%   backgroundcolor=\color{white},
+   backgroundcolor=\color{white},
 %   tabsize=2,
    showspaces=false,
    showstringspaces=false,
@@ -56,11 +56,13 @@
 
 \lstinputlisting{./src/ex9/ex9.cc}
 
-The value of 100 shows the character `d'  because the decimal number 100 corresponds to the character `d' in the ascii table. The value of 356 shows also the character `d' because ...
+When we assign 100 to the variable \verb|value| the character `d' is shown. This because the decimal number 100 corresponds to the character `d' in the ascii table. The type \verb|size_t| is 8 bytes and the type \verb|char| is 1 byte. So when the variable \verb|value| with 356 is casted from \verb|size_t| to \verb|char|, it results to a variable with the size of 1 byte.
 
-size\_t is 8 bytes and char is 1 byte, so when 356 is casted from size\_t to char only 1 byte is left ...
+The byte that is left has the binary form of \verb|01100100| which is equal to 100 and hence it shows the same character `d', because as we previously mentioned the decimal value 100 corresponds to the character `d' in the ascii table.\\
 
-the byte that is left has the binary form of 01100100 which is equal to 100 and hence it shows the same character `d' because as previously mentioned the decimal value 100 corresponds to the character `d' in the ascii table\\
+The unsigned value of 200 is shown using the variable \verb|value|. In the first case we have chosen to cast the variable \verb|value| to the type \verb|char|, because we knew that this conversion would give us directly the character. Although, we were aware that this conversion would lead to loss of data, this was not an issue in this case. The \verb|char| type has sufficient size in order to correspond to every character from the ascii table.
+
+In the second case, we casted the variable \verb|ch| to \verb|size_t|. We used this cast because we knew that this would give us back the number that corresponds to the character `d'. We could have used a cast to \verb|unsigned int|, however we preferred to use \verb|size_t| instead, as it is also proposed in the C++ Annotations.\\
 
 \exercise{}
 %manni
