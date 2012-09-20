@@ -21,8 +21,7 @@ int main()
                         (static_cast<double>(minutes) / 60) +
                         (static_cast<double>(seconds) / 3600);
     
-    coordinate = hemisphere == 'N' || hemisphere == 'E' ? coordinate : 
-                                                          -coordinate;
-    
-    cout << coordinate << '\n';
+    cout << (hemisphere == 'N' || hemisphere == 'E' ? coordinate : 
+                                                      -coordinate) 
+                                                      << '\n';
 }
