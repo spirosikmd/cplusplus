@@ -12,9 +12,9 @@ int main()
 {
     string pathString = getenv("PATH"); // Retrieve the value of the
                                         // env variable `PATH'.
-    cout << "Current PATH: " << pathString << '\n';
-    
-    cout << "What to remove? ";
+    cout << "Current PATH: " << pathString << "\n"
+            "What to remove? ";
+            
     string substring;
     cin >> substring; // Read the string to be removed.
     
