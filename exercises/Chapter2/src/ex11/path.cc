@@ -5,7 +5,7 @@ using namespace std;
 
 enum Errors
 {
-    SUBSTRING_NOT_FOUND = -1
+    SUBSTRING_NOT_FOUND=-1
 };
 
 int main()
