@@ -72,7 +72,7 @@ When we assign 100 to the variable \verb|value| the character `d' is shown. This
 
 The byte that is left has the binary form of \verb|01100100| which is equal to 100 and hence it shows the same character `d', because as we previously mentioned the decimal value 100 corresponds to the character `d' in the ascii table.\\
 
-The unsigned value of 200 is shown using the variable \verb|value|. In the first case we have chosen to cast the variable \verb|value| to the type \verb|char|, because we knew that this conversion would give us directly the character. Although, we were aware that this conversion would lead to loss of data, this was not an issue in this case. The \verb|char| type has sufficient size in order to correspond to every character from the ascii table.
+The unsigned value of 200 is shown using the variable \verb|value|. In the first case we casted the variable \verb|value| to the type \verb|char|, because we knew that this conversion would give us directly the character. Although, we were aware that this conversion would lead to loss of data, this was not an issue in this case. The \verb|char| type has sufficient size in order to correspond to every character from the ascii table.
 
 In the second case, we casted the variable \verb|ch| to \verb|size_t|. We used this cast because we knew that this would give us back the number that corresponds to the character `d'. We could have used a cast to \verb|unsigned int|, however we preferred to use \verb|size_t| instead, as it is also proposed in the C++ Annotations.\\
 
