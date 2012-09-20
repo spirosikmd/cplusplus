@@ -17,9 +17,12 @@ int main()
     char hemisphere;
     cin >> hemisphere;
     
-    double coordinate = 53.2106;
+    double coordinate = degrees +
+                        (static_cast<double>(minutes) / 60) +
+                        (static_cast<double>(seconds) / 3600);
     
-    coordinate = hemisphere == 'N' || hemisphere == 'E' ? coordinate : -coordinate;
+    coordinate = hemisphere == 'N' || hemisphere == 'E' ? coordinate : 
+                                                          -coordinate;
     
     cout << coordinate << '\n';
 }
