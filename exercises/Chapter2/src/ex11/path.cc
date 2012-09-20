@@ -3,6 +3,11 @@
 
 using namespace std;
 
+enum Errors
+{
+    SUBSTRING_NOT_FOUND = -1
+};
+
 int main()
 {
     string pathString = getenv("PATH"); // retrieve the value of the
@@ -13,7 +18,13 @@ int main()
     string substring;
     cin >> substring; // read the string to be removed
     
-    size_t opos = pathString.find(substring);
+    int opos = pathString.find(substring);
+    // Check if find returned SUBSTRING_NOT_FOUND error.
+    // If the substring is not found, then by assigning the length of
+    // the pathString to the opos we ensure that no runtime error will
+    // be produced.
+    opos == SUBSTRING_NOT_FOUND ? opos = pathString.length() : opos;
+    
     size_t on = substring.length(); // get the number of charactes of
                                     // the substring
     pathString.erase(opos, on); // erase the substring of the current
