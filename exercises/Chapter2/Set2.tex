@@ -150,8 +150,12 @@ No I would not use the \verb|gets|-function because it has security issues.  The
 	-------|-------  3
 	\end{verbatim}
 	\item \verb|a == b == c|
+	\begin{verbatim}
+	--|---       1
+	-------|---  2
+	\end{verbatim}
 	
-	We are not in the position to know how the compiler will interpret the above expression.
+	However, the above expression is wrong and it should not be used like this.
 \end{itemize}
 
 \exercise{}
