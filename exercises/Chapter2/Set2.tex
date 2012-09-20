@@ -97,17 +97,15 @@ In the second case, we casted the variable \verb|ch| to \verb|size_t|. We used t
 
 \begin{description}
     \item[a)]\- 
-    	\verb|----a|
+    	\verb|----a| The compiler sees two decrement prefix operators. The prefix operator immediately changes the value of a instead of returning a temporary value, hence it is ok to apply multiple prefex operators.
     \item[b)]\- 
-    	\verb|-----a| results in the error \texttt{lvalue required as decrement operand}. The compiler first applies the \verb|-| prefix operator to a, which turns the a into an rvalue. The \verb|--| decrement operators can only operate on a lvalue.
+    	\verb|-----a| no solution found.... 
     \item[c)]\- 
-	    \verb|a----| results in the error \texttt{lvalue required as decrement operand}
+	    \verb|a----|  The prefix operators return an lvalue, which can be chained. The postfix operator return a prvalue, which cannot be used by operators that modify a value\footnote{cf. ISO/IEC 14882-2011 Section 5.2.6}. Furthermore, it is also logically questionable. Assumed that a is 5, the first decrement would compute the value 4 but return a temporary 5. Hence, the second decrement would be applied to the temporary 5\verb|--| again. 
     \item[d)]\- 
-    	\verb|----5| results in the error \texttt{lvalue required as decrement operand}
-    \item[e)] Change the layout of the second expression showing the way the compiler interprets that expression: add blanks to show what different elements the compiler sees.\\
-    	\verb|-- -- -a|
-    
-    
+    	\verb|----5| results in the error \texttt{lvalue required as decrement operand}. The operator cannot be applied to the value 5 because the computed result cannot be stored. 
+    \item[e) Change the layout of b the way the compiler interprets it]\-    	\verb|-- -- -a|
+
     \item[f) Two different compilable layouts for the b]\-
 
 	\verb|- ----a| results in two decrements and turns the result negative, e.g. if a is initially 5, after the operation it will be -3.\\
