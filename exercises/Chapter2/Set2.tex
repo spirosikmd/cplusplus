@@ -117,7 +117,7 @@ In the second case, we casted the variable \verb|ch| to \verb|size_t|. We used t
 \exercise{}
 %spyros
 
-\lstinputlisting[caption=programename.cc]{./src/ex11/ex11.cc}
+\lstinputlisting[caption=.cc]{./src/ex11/ex11.cc}
 
 
 \exercise{}
@@ -137,7 +137,6 @@ No I would not use the \verb|gets|-function because it has security issues.  The
 
 \begin{itemize}
 	\item \verb|~ a ^ 012 & x << 4|
-	
 	\begin{verbatim}
 	|--                 1
 	            --|---  2
@@ -145,7 +144,15 @@ No I would not use the \verb|gets|-function because it has security issues.  The
 	----|-------------  4
 	\end{verbatim}
 	\item \verb|x += y = 4 == a|
+	\begin{verbatim}
+	         --|---  1
+	--|---           2
+	-------|-------  3
+	\end{verbatim}
 	\item \verb|a == b == c|
+	\begin{verbatim}
+	
+	\end{verbatim}
 \end{itemize}
 
 \exercise{}

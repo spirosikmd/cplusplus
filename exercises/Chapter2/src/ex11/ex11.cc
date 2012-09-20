@@ -5,14 +5,19 @@ using namespace std;
 
 int main()
 {
-    string path_string = getenv("PATH"); // retrieve the value of the
-                                         // env variable PATH
-    cout << "Current PATH: " << path_string << "\n"
-            "What to remove? ";
-    string string_to_remove;
-    cin >> string_to_remove; // read the string to be removed
-    size_t opos = path_string.find(string_to_remove);
-    size_t length = string_to_remove.length();
-    path_string.erase(opos, length);
-    cout << "New PATH: " << path_string << '\n';
+    string pathString = getenv("PATH"); // retrieve the value of the
+                                        // env variable PATH
+    cout << "Current PATH: " << pathString << '\n';
+    
+    cout << "What to remove? ";
+    string substring;
+    cin >> substring; // read the string to be removed
+    
+    size_t opos = pathString.find(substring);
+    size_t on = substring.length(); // get the number of charactes of
+                                    // the substring
+    pathString.erase(opos, on); // erase the substring of the current
+                                // path string starting at the position
+                                // of the first occurrence
+    cout << "New PATH: " << pathString << '\n';
 }
