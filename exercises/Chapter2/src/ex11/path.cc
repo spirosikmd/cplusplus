@@ -22,7 +22,7 @@ int main()
     // Check if `find' returned SUBSTRING_NOT_FOUND error.
     // If the substring is not found, then by assigning the length of
     // the `pathString' to the `opos' we ensure that no runtime error
-    // will be produced.
+    // will be occur.
     opos = opos == SUBSTRING_NOT_FOUND ? pathString.length() : opos;
     
     size_t on = substring.length(); // Get the number of charactes of
