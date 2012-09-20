@@ -4,7 +4,6 @@ using namespace std;
 
 int main() 
 {
-    
     size_t x;
     cin >> x;
     
@@ -12,6 +11,5 @@ int main()
     
     cout << (powerOfTwo ? "The value is an exact power of two" : 
                           "The value is not an exact power of two" ) 
-                          << '\n';   
-                          
+                          << '\n';                         
 }
