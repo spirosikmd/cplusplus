@@ -10,25 +10,30 @@ enum Errors
 
 int main()
 {
-    string pathString = getenv("PATH"); // Retrieve the value of the
-                                        // env variable `PATH'.
+    // Retrieve the value of the env variable `PATH'.
+    string pathString = getenv("PATH");
     cout << "Current PATH: " << pathString << "\n"
             "What to remove? ";
             
     string substring;
     cin >> substring; // Read the string to be removed.
     
+    // Find the substring in the `pathString'. It returns -1 if the
+    // substring is not contained in the `pathString'.
     int opos = pathString.find(substring);
+    
     // Check if `find' returned SUBSTRING_NOT_FOUND error.
     // If the substring is not found, then by assigning the length of
     // the `pathString' to the `opos' we ensure that no runtime error
     // will be occur.
     opos = opos == SUBSTRING_NOT_FOUND ? pathString.length() : opos;
     
-    size_t on = substring.length(); // Get the number of charactes of
-                                    // the `substring'.
-    pathString.erase(opos, on); // Erase the `substring' of the current
-                                // `pathString' starting at the position
-                                // of the first occurrence.
+    // Get the number of charactes of the `substring'.
+    size_t on = substring.length();
+    
+    // Erase the `substring' of the current `pathString' starting at
+    // the position of the first occurrence.
+    pathString.erase(opos, on); 
+    
     cout << "New PATH: " << pathString << '\n';
 }
