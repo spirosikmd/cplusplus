@@ -18,8 +18,8 @@ int main()
     // is not contained in `pathString'.
     size_t opos = pathString.find(substring);
     
-    // Check if `find' returned string::npos. If the substring is not 
-    // found, then by assigning the length of the `pathString' to the 
+    // Check if `find' returned string::npos. If this is true,
+    // then by assigning the length of the `pathString' to the 
     // `opos' we ensure that no runtime error will occur.
     opos = opos == string::npos ? pathString.length() : opos;
     
