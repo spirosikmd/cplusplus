@@ -18,8 +18,9 @@ int main()
     string substring;
     cin >> substring; // Read the string to be removed.
     
-    // Find the substring in the `pathString'. It returns -1 if the
-    // substring is not contained in the `pathString'.
+    // Find the index of the first occurence of `substring' in
+    // `pathString'. It returns -1 if the `substring' is not
+    // contained in `pathString'.
     int opos = pathString.find(substring);
     
     // Check if `find' returned SUBSTRING_NOT_FOUND error.
