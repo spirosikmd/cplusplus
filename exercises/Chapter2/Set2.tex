@@ -126,7 +126,7 @@ If \verb|getline| does not encounter a \textbackslash{n}, the eofbit will be rai
 \begin{description}
 \item[Would you use gets to fill that buffer?]\-
 
-No I would not use the \verb|gets|-function because it has security issues.  The function does not check, if the buffer is large enough respectively it does not stop reading if the buffer is full. Hence, the function could result in a buffer overflow. \footnote{http://www.cplusplus.com/reference/clibrary/cstdio/gets/}.In contrast, C++ strings handle all the required memory management, which helps in developing more robust applications. 
+No we would not use the \verb|gets|-function because it has security issues.  The function does not check, if the buffer is large enough respectively it does not stop reading if the buffer is full. Hence, the function could result in a buffer overflow\footnote{http://www.cplusplus.com/reference/clibrary/cstdio/gets/}. In contrast, C++ strings handle all the required memory management, which helps in developing more robust applications. 
 
 
 \end{description}
