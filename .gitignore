@@ -6,6 +6,7 @@
 *.o
 *.fdb_latexmk
 *.out
+*.tmproj
 hello
 line
 coordinate

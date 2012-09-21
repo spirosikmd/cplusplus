@@ -75,31 +75,14 @@ The byte that is left has the binary form of \verb|01100100| which is equal to 1
 The unsigned value of 200 is shown using the variable \verb|value|. In the first case we casted the variable \verb|value| to the type \verb|char|, because we knew that this conversion would give us directly the character. Although, we were aware that this conversion would lead to loss of data, this was not an issue in this case. The \verb|char| type has sufficient size in order to correspond to every character from the ascii table.
 
 In the second case, we casted the variable \verb|ch| to \verb|size_t|. We used this cast because we knew that this would give us back the number that corresponds to the character `d'. We could have used a cast to \verb|unsigned int|, however we preferred to use \verb|size_t| instead, as it is also proposed in the C++ Annotations.\\
-
+\clearpage
 \exercise{}
-%manni
-% Purpose of this exercise: understand how the compiler reads source files and understand how the decrement operators work.
-% Consider the following expressions (make sure you realize the correct number of minuses, hence the top line indicating column numbers):
-% 
-% 
-%             123456
-%     1:      ----a
-%     2:      -----a
-%     3:      a----
-%         
-% Why does the first expression compile?
-% Why does the second expression not compile?
-% Why does the third expression not compile?
-% Change the a in the first expression into the value 5 and explain why the thus changed expression does not compile.
-% Change the layout of the second expression showing the way the compiler interprets that expression: add blanks to show what different elements the compiler sees.
-% Provide two different layouts for the second expression which would result in completely different (but compilable) interpretations of the expression.
-% When changing the layout, do not use parentheses but only blanks.
 
 \begin{description}
     \item[a)]\- 
     	\verb|----a| The compiler sees two decrement prefix operators. The prefix operator immediately changes the value of \verb|a| instead of returning a temporary value, hence it is ok to apply multiple prefix operators.
     \item[b)]\- 
-    	\verb|-----a| no solution found.... 
+    	\verb|-----a| The unary- operator does not return an lvalue. Hence, the prefix\verb|--| operator cannot be applied. 
     \item[c)]\- 
 	    \verb|a----|  The prefix operators return an lvalue, which can be chained. The postfix operator return a prvalue, which cannot be used by operators that modify a value\footnote{cf. ISO/IEC 14882-2011 Section 5.2.6}. Furthermore, it is also logically questionable. Assumed that a is 5, the first decrement would compute the value 4 but return a temporary 5. Hence, the second decrement would be applied to the temporary 5\verb|--| again. 
     \item[d)]\- 
@@ -128,7 +111,7 @@ If \verb|getline| does not encounter a \textbackslash{n}, the eofbit will be rai
 
 No we would not use the \verb|gets|-function because it has security issues.  The function does not check, if the buffer is large enough respectively it does not stop reading if the buffer is full. Hence, the function could result in a buffer overflow\footnote{http://www.cplusplus.com/reference/clibrary/cstdio/gets/}. In contrast, C++ strings handle all the required memory management, which helps in developing more robust applications. 
 
-
+\clearpage
 \end{description}
 \exercise{}
 %spyros
@@ -163,7 +146,7 @@ The result of the (\verb|&|)-operator between the value and the value-1 will onl
 The code shown in Listing~\ref{lst:powerOfTwo} first checks if the value is not 0 and if this is not the case, uses the perviously discussed operation to determine whether a number is an exact power of two. 
 
 \lstinputlisting[caption=powerOfTwo.cc,label=lst:powerOfTwo]{src/ex14/powerOfTwo.cc}
-
+\clearpage
 \exercise{}
 %spyros
 
