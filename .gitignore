@@ -12,4 +12,9 @@ line
 coordinate
 number
 path
+<<<<<<< HEAD
 powerOfTwo
+=======
+
+*.tmproj
+>>>>>>> ignore
