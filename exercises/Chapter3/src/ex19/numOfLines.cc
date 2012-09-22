@@ -4,17 +4,16 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     string argument("ok");
-    
-    if (argv[1] && argument == argv[1]) // if an argument exists and
-                                        // if it is `ok' then we are
-                                        // executing the right way
+                                // if argument exists and if it is 
+                                // `ok' then we execute right way
+    if (argv[1] && argument == argv[1])
     {
         size_t numOfLines = 0;
         
         string line;
-        while (getline(cin, line))      // read the next line and
-                                        // increment only if line is
-                                        // terminated with enter
+                                // read next line and inc if line is
+                                // terminated with enter
+        while (getline(cin, line))  
             ++numOfLines;
             
         cout << "Number of lines read: " << numOfLines << '\n';
@@ -23,11 +22,10 @@ int main(int argc, char *argv[])
     {
         size_t numOfLines = 0;
         
-        while (not cin.eof())           // check if line terminated
-                                        // with enter
+        while (not cin.eof())   // check if line terminated with enter
         {
             string line;
-            getline(cin, line);         // read the next line
+            getline(cin, line); // read the next line
             ++numOfLines;
         }
         
