@@ -1,0 +1,90 @@
+\documentclass[a4paper]{article}
+\usepackage{latexsym}
+\usepackage[a4paper]{geometry}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[pdftex]{graphicx}
+\usepackage{subfig}
+
+\definecolor{Blue}{rgb}{0,0,0.5}
+\definecolor{Green}{rgb}{0,0.75,0.0}
+\definecolor{LightGray}{rgb}{0.6,0.6,0.6}
+\definecolor{DarkGray}{rgb}{0.3,0.3,0.3}
+\definecolor{gray}{rgb}{0.45,0.45,0.45}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{%
+\parbox{\textwidth}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}\vskip-4pt}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+\lstset{language=C++,
+%   keywords={function,uint8,uint16,uint32,double,break,case,catch,continue,else,elseif,end,for,global,if,otherwise,persistent,return,switch,try,while},
+   basicstyle=\ttfamily\small,
+%   breaklines=true,
+   keywordstyle=\bfseries,
+   commentstyle=\itshape\color{LightGray},
+   stringstyle=\itshape\color{DarkGray},
+%   numbers=left,
+%   numberstyle=\tiny\color{DarkGray},
+%   stepnumber=1,
+%   numbersep=10pt,
+   backgroundcolor=\color{white},
+%   tabsize=2,
+   showspaces=false,
+   showstringspaces=false,
+   captionpos=t,
+   frame=lrb,
+   xleftmargin=\fboxsep,
+   xrightmargin=-\fboxsep,
+   %belowcaptionskip=1em
+   }
+
+%Boldface text for type writer font
+\usepackage{bold-extra} %\DeclareFontShape{OT1}{cmtt}{bx}{n}{<5><6><7><8><9><10><10.95><12><14.4><17.28><20.74><24.88>cmttb10}{}
+
+%Break words properly at the end of a line (which isn't sloppy...)
+\sloppy
+
+%Use command \exercise for each exercise
+\newcounter{exerciseCount}
+\setcounter{exerciseCount}{15}
+\newcommand{\exercise}[1]{\addtocounter{exerciseCount}{1} \noindent \medskip {\large \textsf{\textbf{Exercise \arabic{exerciseCount} #1}}} \par}
+\renewcommand{\theenumi}{\textsf{\textbf{\alph{enumi}}}}
+
+%Use command \code for code snippets
+\newcommand{\code}[1]{\textnormal{\texttt{#1}}}
+
+\setlength{\parindent}{0in}
+
+\title{\textsf{C/C++ Part I \\ Chapter 3 - Set Three}}
+\author{Christian Manteuffel \and Spyros Ioakeimidis}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\exercise{}
+%manni
+
+\exercise{}
+%spyros
+
+\exercise{}
+%manni
+
+\exercise{}
+%spyros
+
+\exercise{}
+%manni
+
+\exercise{}
+%spyros
+
+\exercise{}
+%manni
+
+\exercise{}
+%spyros
+
+\end{document}
