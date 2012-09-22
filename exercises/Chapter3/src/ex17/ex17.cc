@@ -16,18 +16,10 @@ int main()
             case 'q':
                 return 0;
             case '*':
-            {
-                string restChars;
-                cin >> ws;
-                getline(cin, restChars);
-                cout << restChars << '\n';
-                cout << "? ";
-            }
-            break;
             case 'n':
             {
-                string restChars;
                 cin >> ws;
+                string restChars;
                 getline(cin, restChars);
                 cout << restChars << '\n';
                 cout << "? ";
