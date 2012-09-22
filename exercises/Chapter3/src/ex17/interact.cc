@@ -1,6 +1,14 @@
 #include <iostream>
 using namespace std;
 
+enum Commands
+{
+    QUIT='q',
+    NUMBERS='n',
+    MULTIPLY='*',
+    INFORMATION='i'
+};
+
 int main()
 {
     cout << "? ";
@@ -13,10 +21,10 @@ int main()
         
         switch (static_cast<int>(ch))
         {
-            case 'q':
+            case Commands::QUIT:
                 return 0;
-            case '*':
-            case 'n':
+            case Commands::NUMBERS:
+            case Commands::MULTIPLY:
             {
                 cin >> ws;
                 string restChars;
@@ -25,7 +33,7 @@ int main()
                 cout << "? ";
             }
             break;
-            case 'i':
+            case Commands::INFORMATION:
                 cout << "i\n";
             break;
             case '\n':
