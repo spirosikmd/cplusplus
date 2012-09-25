@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <math.h>
 using namespace std;
 
 int main()
@@ -95,5 +96,57 @@ int main()
     {
         cout << "The coordinates are not correctly specified.\n";
         return 0;
+    }
+    
+    if (long1 == long2)
+    {
+        
+    }
+    else
+    {
+        size_t sep1 = long1.find(':');
+        size_t sep2 = long1.rfind(':');
+        string degrees;
+        degrees = long1.substr(0, sep1);
+        string minutes;
+        minutes = long1.substr(sep1 + 1, sep2 - (sep1 + 1));
+        string seconds;
+        seconds = long1.substr(sep2 + 1, long1.length());
+        
+        double long1Double;
+        long1Double = atof(degrees.c_str()) +
+                        atof(minutes.c_str()) / 60 +
+                        atof(seconds.c_str()) / 3600;
+        
+        sep1 = long2.find(':');
+        sep2 = long2.rfind(':');
+        degrees = long2.substr(0, sep1);
+        minutes = long2.substr(sep1 + 1, sep2 - (sep1 + 1));
+        seconds = long2.substr(sep2 + 1, long2.length());
+        
+        double long2Double;
+        long2Double = atof(degrees.c_str()) +
+                        atof(minutes.c_str()) / 60 +
+                        atof(seconds.c_str()) / 3600;
+        
+        cout << "1st Value: " << long1Double << '\n';
+        cout << "2nd Value: " << long2Double << '\n';
+        
+        double longDiff = long1Double > long2Double ?
+                        long1Double - long2Double :
+                        long2Double - long1Double;
+                        
+        sep1 = lat1.find(':');
+        sep2 = lat1.rfind(':');
+        degrees = lat1.substr(0, sep1);
+        minutes = lat1.substr(sep1 + 1, sep2 - (sep1 + 1));
+        seconds = lat1.substr(sep2 + 1, lat1.length());
+
+        double lat1Double;
+        lat1Double = atof(degrees.c_str()) +
+                        atof(minutes.c_str()) / 60 +
+                        atof(seconds.c_str()) / 3600;
+                        
+        cout << "Result: " << cos(lat1Double) << '\n';
     }
 }
