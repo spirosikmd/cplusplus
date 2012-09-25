@@ -79,13 +79,13 @@ int main()
     }
     
     string lat1;
-    lat1 = coordinates.substr(0, index1 - 1);
+    lat1 = coordinates.substr(0, index1 + 1);
     string long1;
-    long1 = coordinates.substr(index1 + 2, index2 - (index1 + 3));
+    long1 = coordinates.substr(index1 + 2, index2 - (index1 + 1));
     string lat2;
-    lat2 = coordinates.substr(index2 + 2, index3 - (index2 + 3));
+    lat2 = coordinates.substr(index2 + 2, index3 - (index2 + 1));
     string long2;
-    long2 = coordinates.substr(index3 + 2, index4 - (index3 + 3));
+    long2 = coordinates.substr(index3 + 2, index4 - (index3 + 1));
                                         
     cout << "lat1: " << lat1 << '\n';
     cout << "long1: " << long1 << '\n';
@@ -118,6 +118,9 @@ int main()
                         atof(minutes.c_str()) / 60 +
                         atof(seconds.c_str()) / 3600;
         
+        long1Double = long1.at(long1.length() - 1) == 'w' ?
+                        -long1Double : long1Double;
+        
         sep1 = long2.find(':');
         sep2 = long2.rfind(':');
         degrees = long2.substr(0, sep1);
@@ -129,12 +132,15 @@ int main()
                         atof(minutes.c_str()) / 60 +
                         atof(seconds.c_str()) / 3600;
         
+        long2Double = long2.at(long2.length() - 1) == 'w' ?
+                        -long2Double : long2Double;
+        
         cout << "1st Value: " << long1Double << '\n';
         cout << "2nd Value: " << long2Double << '\n';
         
-        double longDiff = long1Double > long2Double ?
-                        long1Double - long2Double :
-                        long2Double - long1Double;
+        double longDiff = fabs(fabs(long1Double) - fabs(long2Double));
+        
+        cout << longDiff << '\n';
                         
         sep1 = lat1.find(':');
         sep2 = lat1.rfind(':');
@@ -147,6 +153,9 @@ int main()
                         atof(minutes.c_str()) / 60 +
                         atof(seconds.c_str()) / 3600;
                         
-        cout << "Result: " << cos(lat1Double) << '\n';
+        double result = longDiff * cos(lat1Double);
+        
+        cout << "  distance: " << result * 60 << " NM "
+                "("<< result * 60 * 1.852 <<")\n";
     }
 }
