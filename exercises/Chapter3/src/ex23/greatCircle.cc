@@ -15,8 +15,8 @@ int main()
     string coordinates;
     getline(cin, coordinates);
     
-    size_t first_index;
-    size_t third_index;
+    size_t index1;
+    size_t index3;
     size_t north = coordinates.find('n');
     size_t south = coordinates.find('s');
     if (north != string::npos)
@@ -25,29 +25,29 @@ int main()
         {
             if (north < south)
             {
-                first_index = north;
-                third_index = south;
+                index1 = north;
+                index3 = south;
             }
             else
             {
-                first_index = south;
-                third_index = north;
+                index1 = south;
+                index3 = north;
             }
         }
         else
         {
-            first_index = north;
-            third_index = coordinates.rfind('n');
+            index1 = north;
+            index3 = coordinates.rfind('n');
         }
     }
     else
     {
-        first_index = south;
-        third_index = coordinates.rfind('s');
+        index1 = south;
+        index3 = coordinates.rfind('s');
     }
     
-    size_t second_index;
-    size_t fourth_index;
+    size_t index2;
+    size_t index4;
     size_t east = coordinates.find('e');
     size_t west = coordinates.find('w');
     if (east != string::npos)
@@ -56,38 +56,35 @@ int main()
         {
             if (east < west)
             {
-                second_index = east;
-                fourth_index = west;
+                index2 = east;
+                index4 = west;
             }
             else
             {
-                second_index = west;
-                fourth_index = east;
+                index2 = west;
+                index4 = east;
             }
         }
         else
         {
-            second_index = east;
-            fourth_index = coordinates.rfind('e');
+            index2 = east;
+            index4 = coordinates.rfind('e');
         }
     }
     else
     {
-        second_index = west;
-        fourth_index = coordinates.rfind('w');
+        index2 = west;
+        index4 = coordinates.rfind('w');
     }
     
     string lat1;
-    lat1 = coordinates.substr(0, first_index - 1);
+    lat1 = coordinates.substr(0, index1 - 1);
     string long1;
-    long1 = coordinates.substr(first_index + 2,
-                                    second_index - (first_index + 3));
+    long1 = coordinates.substr(index1 + 2, index2 - (index1 + 3));
     string lat2;
-    lat2 = coordinates.substr(second_index + 2,
-                                    third_index - (second_index + 3));
+    lat2 = coordinates.substr(index2 + 2, index3 - (index2 + 3));
     string long2;
-    long2 = coordinates.substr(third_index + 2,
-                                    fourth_index - (third_index + 3));
+    long2 = coordinates.substr(index3 + 2, index4 - (index3 + 3));
                                         
     cout << "lat1: " << lat1 << '\n';
     cout << "long1: " << long1 << '\n';
