@@ -31,19 +31,25 @@ int main()
                 getline(cin, restChars);
                 cout << restChars << '\n';
                 cout << "? ";
+                break;
             }
-            break;
             case Commands::INFORMATION:
+            {
                 cout << "i\n";
-            break;
+                break;
+            }
             case '\n':
+            {
                 cout << "? ";
-            break;
+                break;
+            }
             case ' ':
-            break;
+                break;
             default:
+            {
                 cout << "ignoring " << ch << '\n';
-            break;
+                break;
+            }
         }
     }
 }
