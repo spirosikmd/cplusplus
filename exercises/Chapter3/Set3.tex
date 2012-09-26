@@ -107,6 +107,29 @@ The problem lies in the second argument that is passed to the function \verb|pow
 \exercise{} %ex22 (optional)
 %manni
 
+\begin{itemize}
+	\item \textbf{Considering the source text, what do you think the author of the program had in mind when he/she wrote the program?}
+	
+	First of all, he/she wanted to list all the command line arguments which were passed to the program with its execution. Then, he/she wanted to let the user select a command line argument by it's index in order to show it's capitalised form, until the user selected to quit. Before quit, he/she wanted to swap the first half of the name of the program (which is the command line argument with index 0) with the second half and show it to the user.
+	
+	\item \textbf{What is your opinion of the shown program?}
+	
+	The program is poorly designed. First of all, the program does not check if the user has provided any command line arguments. This would result of showing to the user the output
+	
+	\begin{verbatim}
+		program name's arguments:
+		
+		Enter the number of a command line argument to capitalise (or -1 to quit)
+	\end{verbatim}
+	
+	by asking from him/her to chose a command line argument to capitalise without actually having command line argument to chose from. If we assume that command line arguments are passed then, the first \verb|for| loop does not use the canonical incremental form as it is proposed. Furthermore, by starting the \verb|idx| at 0, we end up showing to the user the first argument (the name of the program) again.
+	
+	The variable \verb|next| is never initialised. It might be the case that the user will provide an option in order to capitalise a command line argument in the first loop. But the variable \verb|next| is never initialised and the default value is \verb|false|. This mean that the \verb|do...while| loop will terminate without the user selecting \verb|q|.
+	
+	Our idea is that the author wanted to show the capitalised form to the user. However, this is never happening. A \verb|cout| with the capitalised form might be useful feedback for the user. ANother issue is that not localisation is used as far as the variable declaration is concerned. Finally, the last \verb|for| loop does not follow the canonical incremental form.
+\end{itemize}
+
+\lstinputlisting[caption=capitalizeSwap.cc]{./src/ex22/capitalizeSwap.cc}
 
 \exercise{\& 24} %ex23&24 RED THREAD (optional)
 %spyros, manni
