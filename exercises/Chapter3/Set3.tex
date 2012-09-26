@@ -124,10 +124,12 @@ The problem lies in the second argument that is passed to the function \verb|pow
 	
 	by asking from him/her to chose a command line argument to capitalise without actually having command line argument to chose from. If we assume that command line arguments are passed then, the first \verb|for| loop does not use the canonical incremental form as it is proposed. Furthermore, by starting the \verb|idx| at 0, we end up showing to the user the first argument (the name of the program) again.
 	
-	The variable \verb|next| is never initialised. It might be the case that the user will provide an option in order to capitalise a command line argument in the first loop. But the variable \verb|next| is never initialised and the default value is \verb|false|. This mean that the \verb|do...while| loop will terminate without the user selecting \verb|q|.
+	The variable \verb|next| is never initialised. It might be the case that the user will provide an option in order to capitalise a command line argument in the first loop. But the variable \verb|next| is never initialised and the default value is \verb|false|. This mean that the \verb|do...while| loop will terminate without the user selecting \verb|q|. Furthermore, there is no checking of the \verb|nr| variable if the user provided an index that does not correspond to a command line argument index.
 	
-	Our idea is that the author wanted to show the capitalised form to the user. However, this is never happening. A \verb|cout| with the capitalised form might be useful feedback for the user. ANother issue is that not localisation is used as far as the variable declaration is concerned. Finally, the last \verb|for| loop does not follow the canonical incremental form.
+	Our idea is that the author wanted to show the capitalised form to the user. However, this is never happening. A \verb|cout| with the capitalised form might be useful feedback for the user. Another issue is that not localisation is used as far as the variable declaration is concerned. Moreover, the last \verb|for| loop does not follow the canonical incremental form.
 \end{itemize}
+
+If we assume that the functions work properly and that all the required declarations and headers are properly provided, we propose the following program.
 
 \lstinputlisting[caption=capitalizeSwap.cc]{./src/ex22/capitalizeSwap.cc}
 
