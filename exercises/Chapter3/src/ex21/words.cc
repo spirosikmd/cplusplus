@@ -35,15 +35,21 @@ int main(int argc, char *argv[])
             case State::FIRST_WORD:
             {
                 length = word.length();
-                state = (length < max) ? State::WRITE_WORD : 
-                                        State::LONG_WORD;
+                if (length < max)
+                {
+                    cout << word;
+                    state = State::NEXT_WORD;
+                }
+                else
+                    state = State::LONG_WORD;
             }
             break;
             
             case State::NEXT_WORD:
             {
+                cout << " ";
                 cin >> word;
-                length += word.length();
+                length += (word.length() + 1);  // +1 cause of the " "
                 state = (length < max - word.length()) ? 
                                         State::WRITE_WORD : 
                                         State::NEWLINE;
@@ -55,8 +61,8 @@ int main(int argc, char *argv[])
                 
             case State::WRITE_WORD:
             {
-                cout << word << " ";
-                state = State::NEXT_WORD;
+                cout << word;
+                state = State::TRY_NEXT;
             }
             break;
             
@@ -70,7 +76,8 @@ int main(int argc, char *argv[])
             case State::NEWLINE:
             {
                 length = 0;
-                state = State::FIRST_WORD;
+                cout << '\n';
+                return 0;
             }
             break;
             
