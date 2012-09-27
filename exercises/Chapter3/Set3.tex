@@ -73,15 +73,46 @@
 
 \lstinputlisting[caption=interact.cc]{./src/ex17/interact.cc}
 
+\clearpage
+
 \exercise{} %ex18
 %manni
 
 \lstinputlisting[caption=combinations.cc]{./src/ex18/combinations.cc}
 
+Program output:
+
+\begin{verbatim}
+1:
+2: one            
+3:     two         
+4: one two         
+5:         three
+6: one     three
+7:     two three
+8: one two three
+\end{verbatim}
+
 \exercise{} %ex19
 %spyros
 
 \lstinputlisting[caption=numOfLines.cc]{./src/ex19/numOfLines.cc}
+
+Program input and output when executing: \verb|numOfLines ok|
+
+\begin{verbatim}
+line one
+line two
+Number of lines read: 2
+\end{verbatim}
+
+Program input and output when executing: \verb|numOfLines|
+
+\begin{verbatim}
+line one
+line two
+Number of lines read: 3
+\end{verbatim}
 
 \exercise{} %ex20
 %manni
@@ -93,7 +124,7 @@
 One reason is that when using the `\verb|goes to|' operator, the condition that has to be met in order to terminate the loop is not explicitly stated. For instance, the while loop in the example, is it terminated when decay equals to 1 or to 0? Additionally, it is not explicitly stated what is the value with which the variable is decremented on each step.\\
 
 In our opinion, the fact that this operator is part of the language's `dark corners' means that it is not clear how it operates and how it should be used. Probably some of the authors are unaware of the existence of this operator. However, we do believe that even the authors that know about it, try to avoid the use of it. The reasons for this were stated in the previous paragraph.
-
+\clearpage
 \item[Part 2]\-
 
 The problem lies in the second argument that is passed to the function \verb|pow| which is the \verb|1/3|. This division will always return 0 and the decimals will be discarded, because none of the two operators are of type double.
