@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-enum Commands
+enum Command
 {
     QUIT='q',
     NUMBERS='n',
@@ -21,19 +21,19 @@ int main()
         
         switch (static_cast<int>(ch))
         {
-            case Commands::QUIT:
+            case Command::QUIT:
                 return 0;
-            case Commands::NUMBERS:
-            case Commands::MULTIPLY:
+            case Command::NUMBERS:
+            case Command::MULTIPLY:
             {
-                cin >> ws;
+                cin >> ws;               // remove white space chars
                 string restChars;
-                getline(cin, restChars);
+                getline(cin, restChars); // read chars after command
                 cout << restChars << '\n';
                 cout << "? ";
                 break;
             }
-            case Commands::INFORMATION:
+            case Command::INFORMATION:
             {
                 cout << "i\n";
                 break;
