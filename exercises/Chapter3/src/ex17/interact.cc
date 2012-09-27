@@ -19,7 +19,7 @@ int main()
         char ch;
         if (!cin.get(ch))
             break;
-        
+            
         switch (static_cast<int>(ch))
         {
             case Command::QUIT:
@@ -31,7 +31,8 @@ int main()
                 cin >> ws;               // remove white space chars
                 string restChars;
                 getline(cin, restChars); // read chars after command
-                cout << restChars << '\n';
+                size_t idx = restChars.find_last_not_of(' ');
+                cout << restChars.substr(0, idx + 1) << '\n';
                 cout << "? ";
             }
             break;
