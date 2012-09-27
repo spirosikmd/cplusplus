@@ -100,7 +100,21 @@ int main()
     
     if (long1 == long2)
     {
+        size_t sep1 = lat1.find(':');
+        size_t sep2 = lat1.rfind(':');
+        string degrees;
+        degrees = lat1.substr(0, sep1);
+        string minutes;
+        minutes = lat1.substr(sep1 + 1, sep2 - (sep1 + 1));
+        string seconds;
+        seconds = lat1.substr(sep2 + 1, lat1.length());
         
+        double lat1Double;
+        lat1Double = atof(degrees.c_str()) +
+                        atof(minutes.c_str()) / 60 +
+                        atof(seconds.c_str()) / 3600;
+        
+        cout << lat1Double << '\n';
     }
     else
     {
@@ -118,7 +132,7 @@ int main()
                         atof(minutes.c_str()) / 60 +
                         atof(seconds.c_str()) / 3600;
         
-        long1Double = long1.at(long1.length() - 1) == 'w' ?
+        long1Double = long1[long1.length() - 1] == 'w' ?
                         -long1Double : long1Double;
         
         sep1 = long2.find(':');
@@ -132,7 +146,7 @@ int main()
                         atof(minutes.c_str()) / 60 +
                         atof(seconds.c_str()) / 3600;
         
-        long2Double = long2.at(long2.length() - 1) == 'w' ?
+        long2Double = long2[long2.length() - 1] == 'w' ?
                         -long2Double : long2Double;
         
         cout << "1st Value: " << long1Double << '\n';
