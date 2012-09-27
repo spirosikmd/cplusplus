@@ -5,7 +5,7 @@ using namespace std;
 enum State
 {
     START, FIRST_WORD, LONG_WORD, WRITE_WORD, NEXT_WORD,
-    TRY_NEXT, NEWLINE, SEPARATOR, DIRECT_EOF, STOP
+    TRY_NEXT, NEWLINE, DIRECT_EOF, STOP
 };
 
 int main(int argc, char *argv[])
@@ -34,62 +34,64 @@ int main(int argc, char *argv[])
             
             case State::FIRST_WORD:
             {
-                length = word.length();
-                if (length < max)
-                {
-                    cout << word;
-                    state = State::NEXT_WORD;
-                }
-                else
-                    state = State::LONG_WORD;
-            }
-            break;
-            
-            case State::NEXT_WORD:
-            {
-                cout << " ";
-                cin >> word;
-                length += (word.length() + 1);  // +1 cause of the " "
-                state = (length < max - word.length()) ? 
-                                        State::WRITE_WORD : 
-                                        State::NEWLINE;
-            }
-            break;
-            
-            case State::TRY_NEXT:
-            break;
-                
-            case State::WRITE_WORD:
-            {
-                cout << word;
-                state = State::TRY_NEXT;
+                length = 0;
+                state = (word.length() > max) ? State::LONG_WORD : 
+                                                State::WRITE_WORD;
             }
             break;
             
             case State::LONG_WORD:
             {
-                cout << word << '\n';
+                cout << word;
+                cin >> word;
                 state = State::NEWLINE;
+            }
+            break;
+            
+            case State::WRITE_WORD:
+            {
+                cout << word;
+                length += word.length();
+                state = State::NEXT_WORD;
+            }
+            break;
+            
+            case State::NEXT_WORD:
+                state= (cin >> word).eof() ? State::STOP : 
+                                             State::TRY_NEXT;
+            break;
+            
+            case State::TRY_NEXT:
+            {
+                if (length + word.length() < max)
+                {
+                    cout << ' ';
+                    length += 1;
+                    state = State::WRITE_WORD;
+                }
+                else
+                    state = State::NEWLINE;
             }
             break;
             
             case State::NEWLINE:
             {
-                length = 0;
                 cout << '\n';
-                return 0;
+                state = State::FIRST_WORD;
             }
             break;
             
-            case State::SEPARATOR:
-            break;
+            case State::DIRECT_EOF:
+            {
+                cout << "No input text provided.\n";
+                return 0;
+            }
             
             case State::STOP:
-            break;
-            
-            case State::DIRECT_EOF:
+            {
+                cout << ' ' << word;
                 return 0;
-            break;
-        }
-    }
+            }
+        } // switch
+    } // while
 }
