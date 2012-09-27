@@ -9,7 +9,7 @@ int main()
     size_t i = 0;
     while (true)
     {
-        if (not environ[i])
+        if (not environ[i])             // exit if no more variables
             break;
         
         string variable = environ[i];
