@@ -28,9 +28,13 @@ int main()
             case Command::NUMBERS:
             case Command::MULTIPLY:
             {
-                cin >> ws;               // remove white space chars
+                cin >> ws;          // remove leading white space
                 string restChars;
-                getline(cin, restChars); // read chars after command
+                                    // read chars after command
+                getline(cin, restChars); 
+                                    // get the index of the last char
+                                    // in order to remove trailing 
+                                    // white spaces
                 size_t idx = restChars.find_last_not_of(' ');
                 cout << restChars.substr(0, idx + 1) << '\n';
                 cout << "? ";
