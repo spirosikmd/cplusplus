@@ -1,17 +1,17 @@
 #include <iostream>
+
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    string argument("ok");
+    string ok("ok");
                                 // if argument exists and if it is 
-                                // `ok' then we execute right way
-    if (argv[1] && argument == argv[1])
+                                // `ok' then execute right way
+    if (argv[1] && argv[1] == ok)
     {
         size_t numOfLines = 0;
-        
         string line;
-                                // read next line and inc if line is
+                                // read next line and incr if line is
                                 // terminated with enter
         while (getline(cin, line))  
             ++numOfLines;
