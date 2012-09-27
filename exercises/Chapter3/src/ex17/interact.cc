@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 enum Command
@@ -23,6 +24,7 @@ int main()
         {
             case Command::QUIT:
                 return 0;
+            
             case Command::NUMBERS:
             case Command::MULTIPLY:
             {
@@ -31,25 +33,23 @@ int main()
                 getline(cin, restChars); // read chars after command
                 cout << restChars << '\n';
                 cout << "? ";
-                break;
             }
+            break;
+            
             case Command::INFORMATION:
-            {
                 cout << "i\n";
-                break;
-            }
+            break;
+            
             case '\n':
-            {
                 cout << "? ";
-                break;
-            }
+            break;
+            
             case ' ':
-                break;
+            break;
+            
             default:
-            {
                 cout << "ignoring " << ch << '\n';
-                break;
-            }
+            break;
         }
     }
 }
