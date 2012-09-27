@@ -2,14 +2,6 @@
 
 using namespace std;
 
-enum Command
-{
-    QUIT='q',
-    NUMBERS='n',
-    MULTIPLY='*',
-    INFORMATION='i'
-};
-
 int main()
 {
     cout << "? ";
@@ -22,26 +14,25 @@ int main()
             
         switch (static_cast<int>(ch))
         {
-            case Command::QUIT:
+            case 'q':
                 return 0;
             
-            case Command::NUMBERS:
-            case Command::MULTIPLY:
+            case 'n':
+            case '*':
             {
                 cin >> ws;          // remove leading white space
                 string restChars;
                                     // read chars after command
                 getline(cin, restChars); 
                                     // get the index of the last char
-                                    // in order to remove trailing 
-                                    // white spaces
                 size_t idx = restChars.find_last_not_of(' ');
+                                    // remove trailing white spaces
                 cout << restChars.substr(0, idx + 1) << '\n';
                 cout << "? ";
             }
             break;
             
-            case Command::INFORMATION:
+            case 'i':
                 cout << "i\n";
             break;
             
