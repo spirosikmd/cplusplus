@@ -25,7 +25,8 @@ int main()
                                     // read chars after command
                 getline(cin, restChars); 
                                     // get the index of the last char
-                size_t idx = restChars.find_last_not_of(' ');
+                                    // other than space or tab
+                size_t idx = restChars.find_last_not_of(" \t");
                                     // remove trailing white spaces
                 cout << restChars.substr(0, idx + 1) << '\n';
                 cout << "? ";
@@ -41,6 +42,7 @@ int main()
             break;
             
             case ' ':
+            case '\t':
             break;
             
             default:
