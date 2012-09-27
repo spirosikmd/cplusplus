@@ -5,23 +5,23 @@ using namespace std;
 enum State
 {
     START, FIRST_WORD, LONG_WORD, WRITE_WORD, NEXT_WORD,
-    TRY_NEXT, NEWLINE, DIRECT_EOF, STOP
+    TRY_NEXT, NEWLINE, SEPARATOR, DIRECT_EOF, STOP
 };
 
 int main(int argc, char *argv[])
 {
     if (argc == 1)
     {
-        cout << "Please provide max line length as arg. 1, "
+        cout << "Please provide max line length as first argument, "
                 "and input text on stdin.\n";
         return 1;
     }
     
     size_t max = atoi(argv[1]);
     
-    size_t length;
-    string word;
-    State state = State::START;
+    size_t length;                  // the length so far
+    string word;                    // the last read word
+    State state = State::START;     // the current state we are in
     
     while (true)
     {
@@ -57,27 +57,28 @@ int main(int argc, char *argv[])
             break;
             
             case State::NEXT_WORD:
-                state= (cin >> word).eof() ? State::STOP : 
-                                             State::TRY_NEXT;
+                state = (cin >> word).eof() ? State::STOP : 
+                                              State::TRY_NEXT;
             break;
             
             case State::TRY_NEXT:
-            {
-                if (length + word.length() < max)
-                {
-                    cout << ' ';
-                    length += 1;
-                    state = State::WRITE_WORD;
-                }
-                else
-                    state = State::NEWLINE;
-            }
+                state = length + word.length() < max ? 
+                                            State::SEPARATOR : 
+                                            State::NEWLINE;
             break;
             
             case State::NEWLINE:
             {
                 cout << '\n';
                 state = State::FIRST_WORD;
+            }
+            break;
+            
+            case State::SEPARATOR:
+            {
+                cout << ' ';
+                length += 1;        // add 1 cause of the space
+                state = State::WRITE_WORD;
             }
             break;
             
