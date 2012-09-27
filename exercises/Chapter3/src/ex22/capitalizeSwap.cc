@@ -5,7 +5,7 @@ enum Flags
 
 int main(int argc, char *argv[])
 {
-    if (argc < 2)
+    if (argc == 1)
     {
         cout << "No command line arguments were passed.\n";
         return 0;
