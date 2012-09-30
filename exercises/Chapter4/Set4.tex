@@ -1,0 +1,105 @@
+\documentclass[a4paper]{article}
+\usepackage{latexsym}
+\usepackage[a4paper]{geometry}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[pdftex]{graphicx}
+\usepackage{subfig}
+
+\definecolor{Blue}{rgb}{0,0,0.5}
+\definecolor{Green}{rgb}{0,0.75,0.0}
+\definecolor{LightGray}{rgb}{0.6,0.6,0.6}
+\definecolor{DarkGray}{rgb}{0.3,0.3,0.3}
+\definecolor{gray}{rgb}{0.45,0.45,0.45}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{%
+\parbox{\textwidth}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}\vskip-4pt}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+\lstset{language=C++,
+%   keywords={function,uint8,uint16,uint32,double,break,case,catch,continue,else,elseif,end,for,global,if,otherwise,persistent,return,switch,try,while},
+   basicstyle=\ttfamily\small,
+%   breaklines=true,
+   keywordstyle=\bfseries,
+   commentstyle=\itshape\color{LightGray},
+   stringstyle=\itshape\color{DarkGray},
+%   numbers=left,
+%   numberstyle=\tiny\color{DarkGray},
+%   stepnumber=1,
+%   numbersep=10pt,
+   backgroundcolor=\color{white},
+%   tabsize=2,
+   showspaces=false,
+   showstringspaces=false,
+   captionpos=t,
+   frame=lrb,
+   xleftmargin=\fboxsep,
+   xrightmargin=-\fboxsep,
+   %belowcaptionskip=1em
+   }
+
+%Boldface text for type writer font
+\usepackage{bold-extra} %\DeclareFontShape{OT1}{cmtt}{bx}{n}{<5><6><7><8><9><10><10.95><12><14.4><17.28><20.74><24.88>cmttb10}{}
+
+%Break words properly at the end of a line (which isn't sloppy...)
+\sloppy
+
+%Use command \exercise for each exercise
+\newcounter{exerciseCount}
+\setcounter{exerciseCount}{24}
+\newcommand{\exercise}[1]{\addtocounter{exerciseCount}{1} \noindent \medskip {\large \textsf{\textbf{Exercise \arabic{exerciseCount} #1}}} \par}
+\renewcommand{\theenumi}{\textsf{\textbf{\alph{enumi}}}}
+
+%Use command \code for code snippets
+\newcommand{\code}[1]{\textnormal{\texttt{#1}}}
+
+\setlength{\parindent}{0in}
+
+\title{\textsf{C/C++ Part I \\ Chapter 3 - Set Three}}
+\author{Christian Manteuffel \and Spyros Ioakeimidis}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\exercise{} %ex25
+
+\begin{verbatim}
+void function(int arg = 0);
+void function(char *arg = "\0");
+
+int main()
+{
+    function();
+}
+\end{verbatim}
+
+When we call the function without arguments then we expect that the default value will be used. However, the compiler does not know which one of the two versions of \verb|function| to use and reports an ambiguity. The compilers output is the following:
+
+\begin{verbatim}
+... error: call of overloaded 'function()' is ambiguous
+... note: candidates are:
+... note: void function(int)
+... note: void function(char*)
+\end{verbatim}
+
+When we use \verb|fun(0)| in \verb|main| then the function \verb|void fun(int arg)| is called. The reason is that when we call the function \verb|fun| we pass as argument the \verb|int| value 0. This matches the definition of \verb|void fun(int arg)| which is then called.\\
+
+To call the other function using a cast we must call \verb|fun| using a zero-valued argument as \verb|static_cast<char*>(0)|. To call the other function without using a cast we must call \verb|fun| using a zero-valued argument as \verb|fun("\0")|. However, in order not to get a warning we must alter a bit the second declaration of \verb|fun| to \verb|void fun(char const *arg)|.\\
+
+The program compiles ok with either the first or the second declaration omitted. This happens because the compiler finds at least once the declaration of function \verb|fun|, which is called in \verb|main|. Even if the argument is not of the type that the declaration expects, a conversion will take place.\\
+
+\exercise{} %ex26
+
+\exercise{} %ex27
+
+\exercise{} %ex28
+
+\exercise{} %ex29
+
+\exercise{} %ex30 optional
+
+\exercise{} %ex31,32 optional RED THREAD
+
+\end{document}
