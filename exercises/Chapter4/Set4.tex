@@ -92,11 +92,60 @@ The program compiles ok with either the first or the second declaration omitted.
 
 \exercise{} %ex26
 
+
+
 \exercise{} %ex27
 
 \exercise{} %ex28
 
+\lstinputlisting[caption=ex28.cc]{./src/ex28/ex28.cc}
+
+The output of the above program is:
+
+\begin{verbatim}
+2
+\end{verbatim}
+
+\verb|someValue| becomes 2, which means that we can use the return value from \verb|function1| as an \verb|rvalue|. If we have written instead \verb|function1() += someValue|, the compiler would generate an error. Because \verb|function2| returns an \verb|lvalue| we can assign to the returned string a different value. We could also assign the return string from \verb|function2| to another string variable, which would make the return type an \verb|rvalue|. However, the return value remains an \verb|lvalue|, but when used for the assignment it would be implicitly converted into an \verb|rvalue|.\\
+
+If we return a reference to a const object fro ma function which returns an object then the return value acts as an \verb|rvalue|. For example with this function declaration we would return an \verb|rvalue|:
+
+\begin{verbatim}
+Object const &function();
+\end{verbatim}
+
+\vspace{1em}
+
 \exercise{} %ex29
+
+\lstinputlisting[caption=main.cc]{./src/ex29/main.cc}
+
+\lstinputlisting[caption=all.h]{./src/ex29/all.h}
+
+\lstinputlisting[caption=all.cc]{./src/ex29/all.cc}
+
+\begin{enumerate}
+	\item The size of the executable when linking \verb|main.o| with \verb|fun1.o| is 8816 Bytes.
+	\item The size of the executable when linking \verb|main.o| with \verb|fun1.o|, \verb|aux1.o|, \verb|aux2.o|, \verb|aux3.o|, and \verb|aux4.o| is 10160 Bytes.
+	\item The size of the executable when linking \verb|main.o| with \verb|all.o| is 9608 Bytes.
+	\item The size of the executable when linking \verb|main.o| with the created library file \verb|lib.a| is 8816 Bytes.
+\end{enumerate}
+
+In case of (a) the defined functions are \verb|main| and \verb|function|.\\
+
+In case of (b) the defined functions are \verb|main|, \verb|function|, \verb|aux1|, \verb|aux2|, \verb|aux3|, and \verb|aux4|.\\
+
+In case of (c), the defined functions are \verb|main| and \verb|function|. Although we see that the same functions are defined in (a) and (c), there is difference in their sizes. The difference in the size between the programs in (a) and (c) is that the executable in (c) contains also the declarations of the other functions. It does not contain the definitions of the other functions because at the linking phase, the linker realised that only the \verb|function| is used in the \verb|main| and it used only this definition from the \verb|all.cc| file.
+
+The difference in the size between the programs in (b) and (c) is of course that in (b) we are linking all the object files of all the functions separately. Even if we use only the \verb|function| in \verb|main|, all the definitions of all the functions are used.\\
+
+In case of (d), the defined functions are the \verb|main| and \verb|function|. The difference in size between the program of (c) and (d) is that during the linking phase, the linker uses only the definition of \verb|function| from \verb|fun1.cc| which is contained in the library file \verb|lib.a|.\\
+
+What we can learn from this, is that every function's definition must be written in a difference source file. Then, at the linking phase we can use only the object files that we need. We should never write the definitions of the functions in one file.
+
+Another observation is that the creation of a library is very useful. Because also in this case only the necessary object file is linked by the linker. The creation of a library file is extremely useful when we want to distribute software that we have created so others can use it.
+
+\vspace{1em}
 
 \exercise{} %ex30 optional
 
