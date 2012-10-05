@@ -1,3 +1,5 @@
+#include "main.h"
+
 void function()
 {
     int value1 = 1;

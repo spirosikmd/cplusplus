@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-
-using namespace std;
+#include "main.h"
 
 void aux2(string text)
 {

@@ -56,8 +56,8 @@
 
 \setlength{\parindent}{0in}
 
-\title{\textsf{C/C++ Part I \\ Chapter 3 - Set Three}}
-\author{Christian Manteuffel \and Spyros Ioakeimidis}
+\title{\textsf{C/C++ Part I \\ Chapter 4 - Set Four}}
+\author{Spyros Ioakeimidis}
 \date{\today}
 
 \begin{document}
@@ -67,7 +67,7 @@
 
 \begin{verbatim}
 void function(int arg = 0);
-void function(char *arg = "\0");
+void function(char *arg = `\0');
 
 int main()
 {
@@ -92,9 +92,57 @@ The program compiles ok with either the first or the second declaration omitted.
 
 \exercise{} %ex26
 
+The source files are depicted in alphabetical order. The \verb|usage.cc| file was also included as this is the first time of its use.
 
+\lstinputlisting[caption=distances.h]{./src/ex26/distances.h}
+
+\lstinputlisting[caption=computeCoordinatePart.cc]{./src/ex26/computeCoordinatePart.cc}
+
+\lstinputlisting[caption=computeDifference.cc]{./src/ex26/computeDifference.cc}
+
+\lstinputlisting[caption=correct1.cc]{./src/ex26/correct1.cc}
+
+\lstinputlisting[caption=correct2.cc]{./src/ex26/correct2.cc}
+
+\lstinputlisting[caption=getCoordinatePart.cc]{./src/ex26/getCoordinatePart.cc}
+
+\lstinputlisting[caption=showDistance.cc]{./src/ex26/showDistance.cc}
+
+\lstinputlisting[caption=usage.cc]{./src/ex26/usage.cc}
+
+\lstinputlisting[caption=main.cc]{./src/ex26/main.cc}
+
+The output of the program for the given coordinates is:
+
+\begin{verbatim}
+? 52:20:30 n 4:30:20 e 52:20:30 n 24:50:00 w
+distance: 1075.48 NM. (1991.79 km.)
+? 1:20:30 s 4:5:6 e 4:50:10 n 4:5:6 e
+distance: 370.667 NM. (686.475 km.)
+? q
+bye
+\end{verbatim}
 
 \exercise{} %ex27
+
+Compile the program and create object modules for all sources in the current directory.
+
+\begin{verbatim}
+g++-4.7.1 -Wall --std=c++11 -c *.cc
+\end{verbatim}
+
+Add all the object modules to a library \verb|libdistances.a| in the current directory and randomise the index.
+
+\begin{verbatim}
+ar rsv libdistances.a *.o
+ranlib libdistances.a
+\end{verbatim}
+
+The object files are already created from the previous compilation of the program. Link the program against \verb|libdistances.a| library and create executable \verb|distances|.
+
+\begin{verbatim}
+g++-4.7.1 -Wall --std=c++11 -o distances *.o -L. -ldistances -s
+\end{verbatim}
 
 \exercise{} %ex28
 
@@ -108,7 +156,7 @@ The output of the above program is:
 
 \verb|someValue| becomes 2, which means that we can use the return value from \verb|function1| as an \verb|rvalue|. If we have written instead \verb|function1() += someValue|, the compiler would generate an error. Because \verb|function2| returns an \verb|lvalue| we can assign to the returned string a different value. We could also assign the return string from \verb|function2| to another string variable, which would make the return type an \verb|rvalue|. However, the return value remains an \verb|lvalue|, but when used for the assignment it would be implicitly converted into an \verb|rvalue|.\\
 
-If we return a reference to a const object fro ma function which returns an object then the return value acts as an \verb|rvalue|. For example with this function declaration we would return an \verb|rvalue|:
+If we return a reference to a const object from a function which returns an object, then the return value acts as an \verb|rvalue|. For example, if we assume that an object is created with the name \verb|Object|, then with the following function declaration we would return an \verb|rvalue|:
 
 \begin{verbatim}
 Object const &function();
@@ -120,15 +168,15 @@ Object const &function();
 
 \lstinputlisting[caption=main.cc]{./src/ex29/main.cc}
 
-\lstinputlisting[caption=all.h]{./src/ex29/all.h}
+\lstinputlisting[caption=main.h]{./src/ex29/main.h}
 
 \lstinputlisting[caption=all.cc]{./src/ex29/all.cc}
 
 \begin{enumerate}
-	\item The size of the executable when linking \verb|main.o| with \verb|fun1.o| is 8816 Bytes.
-	\item The size of the executable when linking \verb|main.o| with \verb|fun1.o|, \verb|aux1.o|, \verb|aux2.o|, \verb|aux3.o|, and \verb|aux4.o| is 10160 Bytes.
-	\item The size of the executable when linking \verb|main.o| with \verb|all.o| is 9608 Bytes.
-	\item The size of the executable when linking \verb|main.o| with the created library file \verb|lib.a| is 8816 Bytes.
+	\item The size of the executable when linking \verb|main.o| with \verb|fun1.o| is 8972 Bytes.
+	\item The size of the executable when linking \verb|main.o| with \verb|fun1.o|, \verb|aux1.o|, \verb|aux2.o|, \verb|aux3.o|, and \verb|aux4.o| is 9368 Bytes.
+	\item The size of the executable when linking \verb|main.o| with \verb|all.o| is 9360 Bytes.
+	\item The size of the executable when linking \verb|main.o| with the created library file \verb|lib.a| is 8972 Bytes.
 \end{enumerate}
 
 In case of (a) the defined functions are \verb|main| and \verb|function|.\\

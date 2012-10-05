@@ -7,7 +7,7 @@ using namespace std;
 // void fun(char const *arg);
 
 void function(int arg = 0);
-void function(char *arg = "\0");
+void function(char *arg = '\0');
 
 int main()
 {
@@ -25,12 +25,12 @@ int main()
 //     cout << "called the char\n";
 // }
 
-void function(int arg)
-{
-    
-}
-
-void function(char const *arg)
-{
-    
-}
+// void function(int arg)
+// {
+//     
+// }
+// 
+// void function(char const *arg)
+// {
+//     
+// }
