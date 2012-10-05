@@ -176,16 +176,18 @@ Object const &function();
 	\item The size of the executable when linking \verb|main.o| with \verb|fun1.o| is 8972 Bytes.
 	\item The size of the executable when linking \verb|main.o| with \verb|fun1.o|, \verb|aux1.o|, \verb|aux2.o|, \verb|aux3.o|, and \verb|aux4.o| is 9368 Bytes.
 	\item The size of the executable when linking \verb|main.o| with \verb|all.o| is 9360 Bytes.
-	\item The size of the executable when linking \verb|main.o| with the created library file \verb|lib.a| is 8972 Bytes.
+	\item The size of the executable when linking \verb|main.o| with the created library file \verb|liball.a| is 8972 Bytes.
 \end{enumerate}
 
 In case of (a) the defined functions are \verb|main| and \verb|function|.\\
 
-In case of (b) the defined functions are \verb|main|, \verb|function|, \verb|aux1|, \verb|aux2|, \verb|aux3|, and \verb|aux4|.\\
+In case of (b) the defined functions are \verb|main|, \verb|function|, \verb|aux1|, \verb|aux2|, \verb|aux3|, and \verb|aux4|. The size of the executable file in (b) is larger than the one in (a), because in (b) we are linking all the object files with main. Even if only \verb|function| is used in main, all aux* definitions are also included.\\
 
-In case of (c), the defined functions are \verb|main| and \verb|function|. Although we see that the same functions are defined in (a) and (c), there is difference in their sizes. The difference in the size between the programs in (a) and (c) is that the executable in (c) contains also the declarations of the other functions. It does not contain the definitions of the other functions because at the linking phase, the linker realised that only the \verb|function| is used in the \verb|main| and it used only this definition from the \verb|all.cc| file.
+In case of (c), the defined functions are \verb|main|, \verb|function|, \verb|aux1|, \verb|aux2|, \verb|aux3|, and \verb|aux4|. \\
 
-The difference in the size between the programs in (b) and (c) is of course that in (b) we are linking all the object files of all the functions separately. Even if we use only the \verb|function| in \verb|main|, all the definitions of all the functions are used.\\
+%Although we see that the same functions are defined in (a) and (c), there is difference in their sizes. The difference in the size between the programs in (a) and (c) is that the executable in (c) contains also the declarations of the other functions. It does not contain the definitions of the other functions because at the linking phase, the linker realised that only the \verb|function| is used in the \verb|main| and it used only this definition from the \verb|all.cc| file.
+
+%The difference in the size between the programs in (b) and (c) is of course that in (b) we are linking all the object files of all the functions separately. Even if we use only the \verb|function| in \verb|main|, all the definitions of all the functions are used.\\
 
 In case of (d), the defined functions are the \verb|main| and \verb|function|. The difference in size between the program of (c) and (d) is that during the linking phase, the linker uses only the definition of \verb|function| from \verb|fun1.cc| which is contained in the library file \verb|lib.a|.\\
 
