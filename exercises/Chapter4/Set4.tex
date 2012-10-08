@@ -131,17 +131,19 @@ Compile the program and create object modules for all sources in the current dir
 g++-4.7.1 -Wall --std=c++11 -c *.cc
 \end{verbatim}
 
-Add all the object modules to a library \verb|libdistances.a| in the current directory and randomise the index.
+Add all the object modules except \verb|main.o| to a library \verb|libdistances.a| in the current directory and randomise the index. Object modules were added in three steps in order to be able to illustrate the commands properly.
 
 \begin{verbatim}
-ar rsv libdistances.a *.o
+ar rsv libdistances.a computeCoordinatePart.o computeDifference.o
+ar rsv libdistances.a correct1.o correct2.o showDistance.o
+ar rsv libdistances.a getCoordinatePart.o checkFirstToken.o
 ranlib libdistances.a
 \end{verbatim}
 
-The object files are already created from the previous compilation of the program. Link the program against \verb|libdistances.a| library and create executable \verb|distances|.
+Link \verb|main.o| against \verb|libdistances.a| library and create executable \verb|distances|.
 
 \begin{verbatim}
-g++-4.7.1 -Wall --std=c++11 -o distances *.o -L. -ldistances -s
+g++-4.7.1 -Wall --std=c++11 -o distances main.o -L. -ldistances -s
 \end{verbatim}
 
 \exercise{} %ex28
