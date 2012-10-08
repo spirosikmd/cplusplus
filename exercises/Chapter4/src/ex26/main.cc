@@ -6,16 +6,8 @@ int main(int argc, char *argv[])
     {
         cout << "? ";       // prompt
     
-        char sep;
-        
-        cin >> sep;         // look for `q'
-        if (sep != 'q')
-            cin.unget();
-        else
-        {
-            cout << "bye\n";
-            usage(argv[0]); // show usage and exit
-        }
+                            // look for `q'
+        checkFirstToken();
         
                             // get the latitudes and longitudes
         double lat1 = getCoordinatePart();
@@ -44,7 +36,7 @@ int main(int argc, char *argv[])
         
         if (equalLongitudes)
         {
-            cout << getDistance(latitudeDifference);
+            showDistance(latitudeDifference);
             continue;
         }
         
@@ -52,6 +44,6 @@ int main(int argc, char *argv[])
                             // distance along parallels
         correct(longitudeDifference, lat1);
         
-        cout << getDistance(longitudeDifference);
+        showDistance(longitudeDifference);
     }
 }

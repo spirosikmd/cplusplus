@@ -75,7 +75,7 @@ int main()
 }
 \end{verbatim}
 
-When we call the function without arguments then we expect that the default value will be used. However, the compiler does not know which one of the two versions of \verb|function| to use and reports an ambiguity. The compilers output is the following:
+When we call the function without arguments then we expect that the default value will be used. However, the compiler does not know which one of the two versions of \verb|function| to use and reports an ambiguity. The output of the compiler is the following:
 
 \begin{verbatim}
 ... error: call of overloaded 'function()' is ambiguous
@@ -88,13 +88,13 @@ When we use \verb|fun(0)| in \verb|main| then the function \verb|void fun(int ar
 
 To call the other function using a cast we must call \verb|fun| using a zero-valued argument as \verb|static_cast<char*>(0)|. To call the other function without using a cast we must call \verb|fun| using a zero-valued argument as \verb|fun("\0")|. However, in order not to get a warning we must alter a bit the second declaration of \verb|fun| to \verb|void fun(char const *arg)|.\\
 
-The program compiles ok with either the first or the second declaration omitted. This happens because the compiler finds at least once the declaration of function \verb|fun|, which is called in \verb|main|. Even if the argument is not of the type that the declaration expects, a conversion will take place.\\
+The program compiles ok with either the first or the second declaration omitted. This happens because the compiler finds at least once the declaration of function \verb|fun|, which is called in \verb|main|. Even if the argument is not of the type that the declaration expects, an implicit conversion will take place.\\
 
 \exercise{} %ex26
 
-The source files are depicted in alphabetical order. The \verb|usage.cc| file was also included as this is the first time of its use.
-
 \lstinputlisting[caption=distances.h]{./src/ex26/distances.h}
+
+\lstinputlisting[caption=checkFirstToken.cc]{./src/ex26/checkFirstToken.cc}
 
 \lstinputlisting[caption=computeCoordinatePart.cc]{./src/ex26/computeCoordinatePart.cc}
 
@@ -108,7 +108,7 @@ The source files are depicted in alphabetical order. The \verb|usage.cc| file wa
 
 \lstinputlisting[caption=showDistance.cc]{./src/ex26/showDistance.cc}
 
-\lstinputlisting[caption=usage.cc]{./src/ex26/usage.cc}
+%\lstinputlisting[caption=usage.cc]{./src/ex26/usage.cc}
 
 \lstinputlisting[caption=main.cc]{./src/ex26/main.cc}
 
@@ -156,7 +156,7 @@ The output of the above program is:
 
 \verb|someValue| becomes 2, which means that we can use the return value from \verb|function1| as an \verb|rvalue|. If we have written instead \verb|function1() += someValue|, the compiler would generate an error. Because \verb|function2| returns an \verb|lvalue| we can assign to the returned string a different value. We could also assign the return string from \verb|function2| to another string variable, which would make the return type an \verb|rvalue|. However, the return value remains an \verb|lvalue|, but when used for the assignment it would be implicitly converted into an \verb|rvalue|.\\
 
-If we return a reference to a const object from a function which returns an object, then the return value acts as an \verb|rvalue|. For example, if we assume that an object is created with the name \verb|Object|, then with the following function declaration we would return an \verb|rvalue|:
+If we return a \verb|reference to a const object| from a function which returns an object, then the return value acts as an \verb|rvalue|. The caller is not able to modify it. For example, if we assume that an object is created with the name \verb|Object|, then with the following function declaration we would return an \verb|rvalue|:
 
 \begin{verbatim}
 Object const &function();
@@ -181,24 +181,22 @@ Object const &function();
 
 In case of (a) the defined functions are \verb|main| and \verb|function|.\\
 
-In case of (b) the defined functions are \verb|main|, \verb|function|, \verb|aux1|, \verb|aux2|, \verb|aux3|, and \verb|aux4|. The size of the executable file in (b) is larger than the one in (a), because in (b) we are linking all the object files with main. Even if only \verb|function| is used in main, all aux* definitions are also included.\\
+In case of (b) the defined functions are \verb|main|, \verb|function|, \verb|aux1|, \verb|aux2|, \verb|aux3|, and \verb|aux4|. The size of the executable file in (b) is larger than the one in (a), because in (b) we are linking all the object modules. Even if only \verb|function| is used in main, all aux* definitions are also included.\\
 
-In case of (c), the defined functions are \verb|main|, \verb|function|, \verb|aux1|, \verb|aux2|, \verb|aux3|, and \verb|aux4|. \\
+In case of (c), the defined functions are \verb|main|, \verb|function|, \verb|aux1|, \verb|aux2|, \verb|aux3|, and \verb|aux4|. The object module \verb|all.o| contains all function definitions. Therefore, linking \verb|main.o| with \verb|all.o| produces equal-sized executable as the one in (b). This is also the reason that the size of the executable in (c) is larger than the one in (a).\\
 
 %Although we see that the same functions are defined in (a) and (c), there is difference in their sizes. The difference in the size between the programs in (a) and (c) is that the executable in (c) contains also the declarations of the other functions. It does not contain the definitions of the other functions because at the linking phase, the linker realised that only the \verb|function| is used in the \verb|main| and it used only this definition from the \verb|all.cc| file.
 
 %The difference in the size between the programs in (b) and (c) is of course that in (b) we are linking all the object files of all the functions separately. Even if we use only the \verb|function| in \verb|main|, all the definitions of all the functions are used.\\
 
-In case of (d), the defined functions are the \verb|main| and \verb|function|. The difference in size between the program of (c) and (d) is that during the linking phase, the linker uses only the definition of \verb|function| from \verb|fun1.cc| which is contained in the library file \verb|lib.a|.\\
+In case of (d), the defined functions are the \verb|main| and \verb|function|. The difference in size between the programs in (b) and (c) with the one in (d) is that during the linking phase, the linker uses only the definition of \verb|function| from \verb|fun1.cc| which is contained in the library file \verb|lib.a|. It does that because only this function is called in \verb|main|.\\
 
 What we can learn from this, is that every function's definition must be written in a difference source file. Then, at the linking phase we can use only the object files that we need. We should never write the definitions of the functions in one file.
 
-Another observation is that the creation of a library is very useful. Because also in this case only the necessary object file is linked by the linker. The creation of a library file is extremely useful when we want to distribute software that we have created so others can use it.
+Another observation is that the creation of a library is very useful. Only the necessary object file is linked by the linker. Using a library prevents us from declaring separately which object files to link during the linking phase. This is done automatically for us by the linker.
 
 \vspace{1em}
 
 \exercise{} %ex30 optional
-
-\exercise{} %ex31,32 optional RED THREAD
 
 \end{document}
